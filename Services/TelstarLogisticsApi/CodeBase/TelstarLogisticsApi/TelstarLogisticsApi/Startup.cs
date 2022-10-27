@@ -1,6 +1,7 @@
 ﻿using ApiCore.Scenarios;
 using ApiCore.Scenarios.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

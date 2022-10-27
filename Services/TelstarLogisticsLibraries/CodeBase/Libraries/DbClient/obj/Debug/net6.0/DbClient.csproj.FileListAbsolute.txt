@@ -25,3 +25,5 @@ C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeB
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\TelstarLogisticsShared.dll
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\TelstarLogisticsShared.pdb
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.csproj.CopyComplete
+C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\DbClient.runtimeconfig.json
+C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.genruntimeconfig.cache

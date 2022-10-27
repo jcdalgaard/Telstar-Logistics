@@ -1,9 +1,12 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TelstarLogistics.DbClient.Setup;
 using TelstarLogistics.TelstarLogisticsShared.Interfaces;
 
 namespace TelstarLogistics.DbClient
@@ -13,7 +16,7 @@ namespace TelstarLogistics.DbClient
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IDbClient, DbClient>();
+            services.AddDbContext<DataContext>(ServiceLifetime.Transient);
         }
     }
 }
