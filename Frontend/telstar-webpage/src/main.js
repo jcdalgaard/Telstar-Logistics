@@ -18,6 +18,7 @@ import {
     faPaw,
     faMartiniGlass,
     faChevronRight,
+    faX,
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
@@ -27,7 +28,8 @@ library.add(
     faSnowflake,
     faPaw,
     faMartiniGlass,
-    faChevronRight
+    faChevronRight,
+    faX
 )
 
 /* add font awesome icon component */

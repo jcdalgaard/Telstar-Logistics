@@ -1,22 +1,44 @@
 <template>
-    <div class="view-container">
+    <div v-if="selectedRoute === null" class="view-container">
         <RouteSearch />
-        <ResultsList :results-list="resultsList" />
+        <ResultsList
+            :results-list="resultsList"
+            @selectRoute="handleSelectedRoute($event)"
+        />
+    </div>
+    <div v-else-if="!bookingConfirmed" class="view-container">
+        <BookingSummary
+            :route="selectedRoute"
+            @return="selectedRoute = null"
+            @confirmed="saveBooking()"
+        />
+    </div>
+    <div v-else class="view-container">
+        <BookingConfirmation
+            @return=";(selectedRoute = null), (bookingConfirmed = false)"
+            @complete=";(selectedRoute = null), (bookingConfirmed = false)"
+        />
     </div>
 </template>
 
 <script>
 import RouteSearch from '@/components/RouteSearch.vue'
 import ResultsList from '@/components/ResultsList.vue'
+import BookingSummary from '@/components/BookingSummary.vue'
+import BookingConfirmation from '@/components/BookingConfirmation.vue'
 
 export default {
     name: 'BookRoute',
     components: {
         RouteSearch,
         ResultsList,
+        BookingSummary,
+        BookingConfirmation,
     },
     data() {
         return {
+            selectedRoute: null,
+            bookingConfirmed: false,
             resultsList: [
                 {
                     id: 1,
@@ -44,6 +66,14 @@ export default {
                 },
             ],
         }
+    },
+    methods: {
+        handleSelectedRoute(route) {
+            this.selectedRoute = route
+        },
+        async saveBooking() {
+            this.bookingConfirmed = true
+        },
     },
 }
 </script>
