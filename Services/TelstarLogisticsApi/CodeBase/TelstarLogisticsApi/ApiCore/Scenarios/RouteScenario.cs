@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
@@ -64,7 +64,7 @@ namespace ApiCore.Scenarios
                     {
                         DepartureCity = cheapestRoute.FirstCity.Name,
                         DestinationCty = cheapestRoute.SecondCity.Name,
-                        EstimatedArrival = new DateOnly(2022,10,20),
+                        EstimatedArrival = new DateTime(2022,10,20),
                         Id = "23", // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
                         Stops = cheapestRoute.NumberOfSegments
@@ -77,7 +77,7 @@ namespace ApiCore.Scenarios
                     {
                         DepartureCity = "Sahara3",
                         DestinationCty = "Sahara4",
-                        EstimatedArrival = new DateOnly(2022,10,20),
+                        EstimatedArrival = new DateTime(2022,10,20),
                         Id = "23",
                         Price = 13.1,
                         Stops = 1

@@ -19,9 +19,6 @@ namespace DbClient.Entitites
 
         public User User { get; set; } = new User();
 
-        [ForeignKey("BookingStatus")]
-        public int BookingStatusID { get; set; }
-
-        public BookingStatus BookingStatus { get; set; } = new BookingStatus();
+        public string BookingStatus { get; set; }
     }
 }

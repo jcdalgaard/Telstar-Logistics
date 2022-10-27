@@ -14,6 +14,6 @@ namespace ApiCore.Dtos
         public string DestinationCty { get; set; }
         public double Price { get; set; }
         public int Stops { get; set; }
-        public DateOnly EstimatedArrival { get; set; }
+        public DateTime EstimatedArrival { get; set; }
     }
 }

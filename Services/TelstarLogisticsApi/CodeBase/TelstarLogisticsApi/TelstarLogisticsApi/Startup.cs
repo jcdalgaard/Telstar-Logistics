@@ -58,12 +58,14 @@ namespace TelstarLogisticsApi
             services.AddSingleton<ICityArchive, CityArchive>();
             services.AddSingleton<IContentTypeArchive, ContentTypeArchive>();
             services.AddSingleton<ICalculateRouteArchive, CalculateRouteArchive>();
+            services.AddSingleton<IBookingArchive, BookingArchive>();
 
             // add scenarios
             services.AddSingleton<ITestScenario, TestScenario>();
             services.AddSingleton<ICityScenario, CityScenario>();
             services.AddSingleton<IContentTypeScenario, ContentTypeScenario>();
             services.AddSingleton<IRouteScenario, RouteScenario>();
+            services.AddSingleton<IBookingScenario, BookingScenario>();
 
             // add error handler
             //services.AddSingleton<IErrorHandler, ErrorHandler>();
