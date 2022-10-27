@@ -11,7 +11,7 @@ using DbClient;
 
 namespace ApiCore.Scenarios
 {
-    public class CityScenario: ICityScenario
+    public class CityScenario : ICityScenario
     {
         private readonly ICityArchive _cityArchive;
 
