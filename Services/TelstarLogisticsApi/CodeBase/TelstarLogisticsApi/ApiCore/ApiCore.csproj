@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Mappers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\DbClient.csproj" />
     <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\ExternalApiClient\ExternalApiClient.csproj" />
   </ItemGroup>

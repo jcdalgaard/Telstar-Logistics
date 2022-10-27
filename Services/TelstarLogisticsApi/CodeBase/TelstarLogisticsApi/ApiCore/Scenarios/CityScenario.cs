@@ -4,12 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ApiCore.Dtos;
+using ApiCore.Mappers;
 using ApiCore.Scenarios.Interfaces;
+using DbClient.Archives.Interfaces;
 
 namespace ApiCore.Scenarios
 {
     public class CityScenario: ICityScenario
     {
+        private readonly ICityArchive _cityArchive;
+
+        public CityScenario(ICityArchive cityArchive)
+        {
+            _cityArchive = cityArchive;
+        }
+
         public ConnectedCitiesDto GetConnectedCities(string cityName, double weight, string contentType)
         {
             return new ConnectedCitiesDto()
@@ -35,17 +44,7 @@ namespace ApiCore.Scenarios
 
         public List<CityNameDto> GetAllCities()
         {
-            return new List<CityNameDto>()
-            {
-                new CityNameDto()
-                {
-                    Name = "Sahara"
-                },
-                new CityNameDto()
-                {
-                    Name = "Hvalbugten"
-                }
-            };
+            return CityMapper.MapCityCollectionToCityNameList(_cityArchive.GetAllCities());
         }
     }
 }

@@ -10,6 +10,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using DbClient.Archives;
+using DbClient.Archives.Interfaces;
 using TelstarLogistics.DbClient.Archives;
 using TelstarLogistics.DbClient.Archives.Interfaces;
 using TelstarLogistics.DbClient.Setup;
@@ -52,6 +54,7 @@ namespace TelstarLogisticsApi
             // add archives
             services.AddSingleton<ITestArchive, TestArchive>();
             services.AddSingleton<IDbTestArchive, DbTestArchive>();
+            services.AddSingleton<ICityArchive, CityArchive>();
 
             // add scenarios
             services.AddSingleton<ITestScenario, TestScenario>();
