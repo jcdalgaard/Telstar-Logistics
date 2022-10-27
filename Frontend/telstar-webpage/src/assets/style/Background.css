@@ -1,0 +1,13 @@
+@import '~@/assets/style/Variables.css';
+
+.bg-telstar-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-telstar-primary-light {
+    background-color: var(--primary-light-color) !important;
+}
+
+.bg-telstar-secondary-light {
+    background-color: var(--secondary-light-color) !important;
+}

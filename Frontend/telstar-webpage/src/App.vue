@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
             <div class="container-fluid">
                 <div class="navbar__logo">
                     <img src="~@/assets/img/telstar-logo.png" />
@@ -18,7 +18,7 @@
                 </button>
                 <div class="collapse navbar-collapse mx-4" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item mx-3">
+                        <li class="nav-item mx-3 text-end text-lg-start">
                             <router-link
                                 class="nav-item-link light"
                                 :to="lang.nav.bookRoute.link"
@@ -26,7 +26,7 @@
                                 {{ lang.nav.bookRoute.name }}
                             </router-link>
                         </li>
-                        <li class="nav-item mx-3">
+                        <li class="nav-item mx-3 text-end text-lg-start">
                             <router-link
                                 class="nav-item-link light"
                                 :to="lang.nav.bookingHistory.link"
@@ -34,7 +34,7 @@
                                 {{ lang.nav.bookingHistory.name }}
                             </router-link>
                         </li>
-                        <li class="nav-item mx-3">
+                        <li class="nav-item mx-3 text-end text-lg-start">
                             <router-link
                                 class="nav-item-link light"
                                 :to="lang.nav.bookingReport.link"
@@ -42,7 +42,9 @@
                                 {{ lang.nav.bookingReport.name }}
                             </router-link>
                         </li>
-                        <li class="nav-item dropdown mx-3">
+                        <li
+                            class="nav-item dropdown mx-3 text-end text-lg-start"
+                        >
                             <a
                                 class="dropdown-toggle nav-item-link light"
                                 href="#"
@@ -57,7 +59,7 @@
                                 class="dropdown-menu p-3 pop-shadow border-0"
                                 aria-labelledby="navbarDropdown"
                             >
-                                <li>
+                                <li class="text-end text-lg-start">
                                     <router-link
                                         class="nav-item-link"
                                         :to="lang.nav.adminCities.link"
@@ -65,7 +67,7 @@
                                         {{ lang.nav.adminCities.name }}
                                     </router-link>
                                 </li>
-                                <li>
+                                <li class="text-end text-lg-start">
                                     <router-link
                                         class="nav-item-link"
                                         :to="lang.nav.adminBookings.link"
@@ -103,7 +105,7 @@ export default {
 }
 
 .navbar__logo {
-    height: 4rem;
+    height: var(--logo-height);
 }
 
 .navbar__logo img {
@@ -114,4 +116,8 @@ export default {
 .nav-item-link {
     font-weight: var(--fw-bold);
 }
+
+/*.navbar-collapse .nav-item {*/
+/*    text-align: end;*/
+/*}*/
 </style>
