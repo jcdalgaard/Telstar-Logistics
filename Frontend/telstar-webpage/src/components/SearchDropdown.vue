@@ -85,8 +85,11 @@ export default {
     },
     computed: {
         searchOptions() {
-            let filtered = ['Foo', 'Bar']
-            return filtered
+            if (Array.isArray(this.options))
+                return this.options.filter((option) =>
+                    option.toLowerCase().includes(this.value.toLowerCase())
+                )
+            else return []
         },
     },
     methods: {

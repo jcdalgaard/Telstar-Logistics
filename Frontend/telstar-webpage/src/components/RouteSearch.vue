@@ -4,17 +4,20 @@
             <div class="row">
                 <div class="col-12 col-md-8">
                     <div class="row p-2">
-                        <div class="col-12">
+                        <div class="col-12 mb-2">
                             <SearchDropdown
                                 placeholder="From"
-                                @setRoute="search = $event"
+                                :loading="loading"
+                                :options="optionsList"
+                                @setRoute="departingCity = $event"
                             />
-                            <p class="text-white">{{ search }}</p>
                         </div>
                         <div class="col-12">
                             <SearchDropdown
                                 placeholder="To"
-                                @setRoute="search = $event"
+                                :loading="loading"
+                                :options="optionsList"
+                                @setRoute="destinationCity = $event"
                             />
                         </div>
                     </div>
@@ -122,19 +125,27 @@ export default {
     },
     data() {
         return {
-            search: '',
-            tmpList: ['test', '1', '2', '3'],
+            departingCity: '',
+            destinationCity: '',
             recordedDelivery: false,
             refridgeratedGoods: false,
             liveAnimals: false,
             cautiousParcels: false,
             expressDeliery: false,
+            optionsList: ['Foo', 'Bar'],
+            loading: false,
         }
     },
     methods: {
-        handleSubmit() {
+        async handleSubmit() {
             console.log('submit')
         },
+        async getCities() {
+            console.log('Getting cities')
+        },
+    },
+    async mounted() {
+        await this.getCities()
     },
 }
 </script>
