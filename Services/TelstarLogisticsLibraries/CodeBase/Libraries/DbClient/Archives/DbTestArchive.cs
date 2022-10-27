@@ -4,21 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TelstarLogistics.DbClient.Archives.Interfaces;
+using TelstarLogistics.DbClient.Setup;
 
 namespace TelstarLogistics.DbClient.Archives
 {
     public class DbTestArchive: IDbTestArchive
     {
-        private readonly IDbClient _dbClient;
+        private readonly DataContext _dataContext;
 
-        public DbTestArchive(IDbClient dbClient)
+        public DbTestArchive(DataContext dataContext)
         {
-            _dbClient = dbClient;
+            _dataContext = dataContext;
         }
+
+
         public void Test()
         {
             Console.WriteLine("DB works!");
-            _dbClient.RunCommand("SELECT * from dbo.UserRole");
+            Console.WriteLine(_dataContext.UserRole.FirstOrDefault().Name);
         }
     }
 }

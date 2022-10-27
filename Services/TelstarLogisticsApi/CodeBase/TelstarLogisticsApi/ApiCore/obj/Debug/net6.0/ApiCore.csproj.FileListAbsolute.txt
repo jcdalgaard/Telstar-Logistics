@@ -17,3 +17,5 @@ C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\Te
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\TelstarLogisticsApi\ApiCore\bin\Debug\net6.0\DbClient.pdb
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\TelstarLogisticsApi\ApiCore\bin\Debug\net6.0\TelstarLogisticsShared.dll
 C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\TelstarLogisticsApi\ApiCore\bin\Debug\net6.0\TelstarLogisticsShared.pdb
+C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\TelstarLogisticsApi\ApiCore\bin\Debug\net6.0\ApiCore.runtimeconfig.json
+C:\Users\mrug\Desktop\Telstar-Logistics\Services\TelstarLogisticsApi\CodeBase\TelstarLogisticsApi\ApiCore\obj\Debug\net6.0\ApiCore.genruntimeconfig.cache
