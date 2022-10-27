@@ -1,5 +1,7 @@
 ﻿using ApiCore.Scenarios;
 using ApiCore.Scenarios.Interfaces;
+using DbClient.Archives;
+using DbClient.Archives.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -10,8 +12,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using DbClient.Archives;
-using DbClient.Archives.Interfaces;
 using TelstarLogistics.DbClient.Archives;
 using TelstarLogistics.DbClient.Archives.Interfaces;
 using TelstarLogistics.DbClient.Setup;
@@ -21,6 +21,7 @@ using TelstarLogistics.ExternalApiClient.Archives.Interfaces;
 using TelstarLogistics.TelstarLogisticsShared.Interfaces;
 
 [assembly: FunctionsStartup(typeof(TelstarLogisticsApi.Startup))]
+
 namespace TelstarLogisticsApi
 {
     public class Startup : FunctionsStartup
@@ -39,11 +40,11 @@ namespace TelstarLogisticsApi
             //builder.Services.AddLogging();
             ConfigureServices(builder.Services);
         }
+
         public void ConfigureServices(IServiceCollection services)
         {
             // add http client
             services.AddHttpClient<IExternalApiClient, ExternalApiClient>();
-
 
             // Configure services from shared projects
             foreach (var projectDependency in ProjectDependencies)
@@ -55,6 +56,7 @@ namespace TelstarLogisticsApi
             services.AddSingleton<ITestArchive, TestArchive>();
             services.AddSingleton<IDbTestArchive, DbTestArchive>();
             services.AddSingleton<ICityArchive, CityArchive>();
+            services.AddSingleton<IContentTypeArchive, ContentTypeArchive>();
 
             // add scenarios
             services.AddSingleton<ITestScenario, TestScenario>();
@@ -62,11 +64,8 @@ namespace TelstarLogisticsApi
             services.AddSingleton<IContentTypeScenario, ContentTypeScenario>();
             services.AddSingleton<IRouteScenario, RouteScenario>();
 
-
-
             // add error handler
             //services.AddSingleton<IErrorHandler, ErrorHandler>();
-
         }
     }
 }
