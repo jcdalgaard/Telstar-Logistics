@@ -1,44 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import lang from '@/utils/lang/english.json'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/',
-        name: 'BookRoute',
+        path: `${lang.nav.bookRoute.link}`,
+        name: `${lang.nav.bookRoute.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "book-route" */ '../views/BookRoute.vue'
             ),
     },
     {
-        path: '/route-history',
-        name: 'RouteHistory',
+        path: `${lang.nav.bookingHistory.link}`,
+        name: `${lang.nav.bookingHistory.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "route-history" */ '../views/RouteHistory.vue'
             ),
     },
     {
-        path: '/booking-report',
-        name: 'BookingReport',
+        path: `${lang.nav.bookingReport.link}`,
+        name: `${lang.nav.bookingReport.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "booking-report" */ '../views/BookingReport.vue'
             ),
     },
     {
-        path: '/admin-cities',
-        name: 'AdminCities',
+        path: `${lang.nav.adminCities.link}`,
+        name: `${lang.nav.adminCities.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "admin-cities" */ '../views/AdminCities.vue'
             ),
     },
     {
-        path: '/admin-bookings',
-        name: 'AdminBookings',
+        path: `${lang.nav.adminBookings.link}`,
+        name: `${lang.nav.adminBookings.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "admin-bookings" */ '../views/AdminBookings.vue'

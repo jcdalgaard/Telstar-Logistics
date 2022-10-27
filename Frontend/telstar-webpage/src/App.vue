@@ -17,22 +17,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-2">
-                            <router-link to="/">Book route</router-link>
+                            <router-link :to="lang.nav.bookRoute.link">{{
+                                lang.nav.bookRoute.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/route-history"
-                                >Booking History</router-link
-                            >
+                            <router-link :to="lang.nav.bookingHistory.link">{{
+                                lang.nav.bookingHistory.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/booking-report"
-                                >Reporting</router-link
-                            >
+                            <router-link :to="lang.nav.bookingReport.link">{{
+                                lang.nav.bookingReport.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/admin-cities"
-                                >Administrate</router-link
-                            >
+                            <router-link :to="lang.nav.adminCities.link">{{
+                                lang.nav.adminCities.name
+                            }}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -41,6 +43,19 @@
         <router-view />
     </div>
 </template>
+
+<script>
+import lang from '@/utils/lang/english.json'
+
+export default {
+    name: 'App',
+    data() {
+        return {
+            lang: lang,
+        }
+    },
+}
+</script>
 
 <style>
 @import '~@/assets/style/Common.css';
