@@ -8,6 +8,6 @@ namespace DbClient.Entitites
 {
     public class SegmentPrice : BaseModel
     {
-        private float Value { get; set; }
+        private double Value { get; set; }
     }
 }
