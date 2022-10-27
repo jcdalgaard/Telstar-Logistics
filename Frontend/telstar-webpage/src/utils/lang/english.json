@@ -21,5 +21,22 @@
             "name": "Bookings",
             "link": "/administrate-bookings"
         }
+    },
+    "BookRoute": {
+        "RouteSearch": {
+            "Search": "Search",
+            "From": "From",
+            "To": "To",
+            "recordedDelivery": "Recorded delivery*",
+            "refridgeratedGoods": "Refridgerated goods*",
+            "liveAnimals": "Live animals*",
+            "cautiousParcels": "Cautious parcels*",
+            "expressDeliery": "Express deliery*",
+            "additionalCost": "* Additional cost may apply",
+            "maxWeight": "Max weight 40Kg",
+            "noWeapons": "No weapons",
+            "loading": "Loading...",
+            "noResults": "No results..."
+        }
     }
 }

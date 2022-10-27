@@ -9,6 +9,8 @@
                                 placeholder="From"
                                 :loading="loading"
                                 :options="optionsList"
+                                :loadingText="lang.loading"
+                                :noResultsMessage="lang.noResults"
                                 @setRoute="departingCity = $event"
                             />
                         </div>
@@ -17,6 +19,8 @@
                                 placeholder="To"
                                 :loading="loading"
                                 :options="optionsList"
+                                :loadingText="lang.loading"
+                                :noResultsMessage="lang.noResults"
                                 @setRoute="destinationCity = $event"
                             />
                         </div>
@@ -36,7 +40,7 @@
                                 <label
                                     class="form-check-label"
                                     for="flexSwitchCheckDefault"
-                                    >Default switch checkbox input</label
+                                    >{{ lang.expressDeliery }}</label
                                 >
                             </div>
                         </div>
@@ -49,7 +53,7 @@
                         >
                             <IconBtn
                                 icon="fa-solid fa-paper-plane"
-                                label="Recorded delivery"
+                                :label="lang.recordedDelivery"
                                 type="button"
                                 :checked="recordedDelivery"
                                 @click="recordedDelivery = $event"
@@ -60,7 +64,7 @@
                         >
                             <IconBtn
                                 icon="fa-solid fa-snowflake"
-                                label="Refridgerated Goods"
+                                :label="lang.refridgeratedGoods"
                                 :checked="refridgeratedGoods"
                                 @click="refridgeratedGoods = $event"
                             />
@@ -70,7 +74,7 @@
                         >
                             <IconBtn
                                 icon="fa-solid fa-paw"
-                                label="Live Animals"
+                                :label="lang.liveAnimals"
                                 :checked="liveAnimals"
                                 @click="liveAnimals = $event"
                             />
@@ -80,7 +84,7 @@
                         >
                             <IconBtn
                                 icon="fa-solid fa-martini-glass"
-                                label="Cautious Parcels"
+                                :label="lang.cautiousParcels"
                                 :checked="cautiousParcels"
                                 @click="cautiousParcels = $event"
                             />
@@ -90,18 +94,18 @@
             </div>
             <div class="row d-flex align-items-end p-2">
                 <div class="col text-start">
-                    <p class="my-0 py-0">
-                        * Additional costs may apply <br />
-                        Max weight 40kg <br />
-                        No weapons allowed
-                    </p>
+                    <ul class="mb-0">
+                        <li>{{ lang.additionalCost }}</li>
+                        <li>{{ lang.maxWeight }}</li>
+                        <li>{{ lang.noWeapons }}</li>
+                    </ul>
                 </div>
                 <div class="col-auto">
                     <button
                         type="submit"
                         class="btn btn-lg btn-telstar-primary"
                     >
-                        Search
+                        {{ lang.Search }}
                         <font-awesome-icon
                             icon="fa-solid fa-magnifying-glass"
                             class="ml-2"
@@ -116,6 +120,7 @@
 <script>
 import SearchDropdown from '@/components/SearchDropdown.vue'
 import IconBtn from '@/components/IconBtn.vue'
+import lang from '@/utils/lang/langBroker'
 
 export default {
     name: 'RouteSearch',
@@ -134,6 +139,7 @@ export default {
             expressDeliery: false,
             optionsList: ['Foo', 'Bar'],
             loading: false,
+            lang: lang.BookRoute.RouteSearch,
         }
     },
     methods: {

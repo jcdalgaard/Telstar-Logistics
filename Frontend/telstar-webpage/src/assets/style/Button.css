@@ -2,5 +2,5 @@
 
 .btn-telstar-primary {
     background-color: var(--primary-color) !important;
-    color: white;
+    color: white !important;
 }

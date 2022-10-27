@@ -33,7 +33,7 @@
                 <div class="spinner-border spinner-border-sm" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
-                Loading...
+                {{ loadingText }}
             </span>
             <div
                 class="dropdown-item"
@@ -60,6 +60,10 @@ export default {
         noResultsMessage: {
             type: String,
             default: 'No results...',
+        },
+        loadingText: {
+            type: String,
+            default: 'Loading...',
         },
         options: {
             type: Array,
