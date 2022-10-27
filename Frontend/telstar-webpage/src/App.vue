@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import lang from '@/utils/lang/english.json'
+import lang from '@/utils/lang/langBroker.js'
 
 export default {
     name: 'App',

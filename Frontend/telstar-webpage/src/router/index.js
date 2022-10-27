@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import lang from '@/utils/lang/english.json'
+import lang from '@/utils/lang/langBroker.js'
 
 Vue.use(VueRouter)
 
