@@ -1,0 +1,12 @@
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\bin\Debug\net6.0\TelstarLogisticsShared.deps.json
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\bin\Debug\net6.0\TelstarLogisticsShared.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\bin\Debug\net6.0\TelstarLogisticsShared.pdb
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.csproj.AssemblyReference.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.AssemblyInfoInputs.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.AssemblyInfo.cs
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.csproj.CoreCompileInputs.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\refint\TelstarLogisticsShared.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\TelstarLogisticsShared.pdb
+C:\Users\mrug\Desktop\Services\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\obj\Debug\net6.0\ref\TelstarLogisticsShared.dll
