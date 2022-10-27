@@ -137,7 +137,23 @@ export default {
             liveAnimals: false,
             cautiousParcels: false,
             expressDeliery: false,
-            optionsList: ['Foo', 'Bar'],
+            optionsList: [
+                {
+                    id: 1,
+                    name: 'Addis Abeba',
+                    description: 'String',
+                },
+                {
+                    id: 2,
+                    name: 'Tripoli',
+                    description: 'String',
+                },
+                {
+                    id: 3,
+                    name: 'Zanzibar',
+                    description: 'String',
+                },
+            ],
             loading: false,
             lang: lang.BookRoute.RouteSearch,
         }
