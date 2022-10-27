@@ -1,8 +1,11 @@
 <template>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <nav
+            v-if="loggedIn"
+            class="navbar navbar-expand-lg navbar-dark fixed-top"
+        >
             <div class="container-fluid">
-                <div class="navbar__logo">
+                <div class="telstar-logo">
                     <img src="~@/assets/img/telstar-logo.png" />
                 </div>
                 <button
@@ -87,6 +90,7 @@
 
 <script>
 import lang from '@/utils/lang/langBroker.js'
+import { login } from '@/state'
 
 export default {
     name: 'App',
@@ -94,6 +98,17 @@ export default {
         return {
             lang: lang,
         }
+    },
+    created() {
+        login.isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
+    },
+    computed: {
+        loggedIn() {
+            return login.isLoggedIn
+        },
+        loggedInUser() {
+            return login.loggedInUser
+        },
     },
 }
 </script>
@@ -104,20 +119,7 @@ export default {
     background-color: var(--primary-color);
 }
 
-.navbar__logo {
-    height: var(--logo-height);
-}
-
-.navbar__logo img {
-    height: 100%;
-    width: 100%;
-}
-
 .nav-item-link {
     font-weight: var(--fw-bold);
 }
-
-/*.navbar-collapse .nav-item {*/
-/*    text-align: end;*/
-/*}*/
 </style>
