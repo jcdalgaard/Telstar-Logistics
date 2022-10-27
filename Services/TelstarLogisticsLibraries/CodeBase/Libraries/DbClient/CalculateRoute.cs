@@ -2,7 +2,9 @@
 // source shortest path algorithm.
 // The program is for adjacency matrix
 // representation of the graph
+using DbClient.Entitites;
 using System;
+using TelstarLogistics.DbClient.Setup;
 
 public class CalculateRoute
 {
@@ -11,9 +13,10 @@ public class CalculateRoute
     // value, from the set of vertices
     // not yet included in shortest
     // path tree
-    static int V = 9;
+    //static int V = 9;
     int minDistance(int[] dist,
-                    bool[] sptSet)
+                    bool[] sptSet,
+                    int V)
     {
         // Initialize min value
         int min = int.MaxValue, min_index = -1;
@@ -34,7 +37,7 @@ public class CalculateRoute
     {
         Console.Write("Vertex     Distance "
                       + "from Source\n");
-        for (int i = 0; i < V; i++)
+        for (int i = 0; i < n; i++)
             Console.Write(i + " \t\t " + dist[i] + "\n");
     }
 
@@ -42,8 +45,10 @@ public class CalculateRoute
     // single source shortest path algorithm
     // for a graph represented using adjacency
     // matrix representation
-    void dijkstra(int[,] graph, int src)
+    int dijkstra(int[,] graph, int src, int target, int V)
     {
+        src -= 1;
+        target -= 1;
         int[] dist = new int[V]; // The output array. dist[i]
                                  // will hold the shortest
                                  // distance from src to i
@@ -73,7 +78,7 @@ public class CalculateRoute
             // from the set of vertices not yet
             // processed. u is always equal to
             // src in first iteration.
-            int u = minDistance(dist, sptSet);
+            int u = minDistance(dist, sptSet, V);
 
             // Mark the picked vertex as processed
             sptSet[u] = true;
@@ -94,14 +99,14 @@ public class CalculateRoute
 
         // print the constructed distance array
         printSolution(dist, V);
+        return dist[target];
     }
 
     // Driver Code
-    public void Test()
+
+    public Route calculateCheapestRoute(List<Route> AllRoutes, int src, int target) // Get number of cities
     {
-        /* Let us create the example 
-graph discussed above */
-        int[,] graph = new int[,] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
+        /* int[,] graph = new int[,] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
                                       { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
                                       { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
                                       { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
@@ -110,10 +115,38 @@ graph discussed above */
                                       { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
                                       { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
                                       { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-        int[,] graph = som
+        */
+        // Initialize graph/distance to 0, and then build from DB
+        System.Console.WriteLine("Entered calculateCheapestRoute");
+        System.Console.WriteLine(AllRoutes.Count());
+        int NumCities = 32;
+        int[,] graph = new int[NumCities, NumCities];
+        for (int i=0; i < NumCities; i++)
+        {
+            for (int j=0; j < NumCities; j++)
+            {
+                graph[i, j] = 0;
+            }
+        }
+        foreach (Route route in AllRoutes)
+        {
+            //System.Console.WriteLine(route.ID);
+            System.Console.WriteLine(route.FirstCityID - 1);
+            System.Console.WriteLine(route.SecondCityID - 1);
+            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.NumberOfSegments;
+            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.NumberOfSegments;
+        }
+
+
 
         CalculateRoute t = new CalculateRoute();
-        t.dijkstra(graph, 0);
+        int Steps = t.dijkstra(graph, src, target, NumCities);
         System.Console.WriteLine("TEST RAN AND RETURNED");
+        System.Console.WriteLine("CityFrom: " + src);
+        System.Console.WriteLine("CityTo: " + target);
+        System.Console.WriteLine("NumberOfSteps!!!!!!: " + Steps);
+        Route cheapestRoute = new Route();
+        return cheapestRoute;
     }
+
 }
