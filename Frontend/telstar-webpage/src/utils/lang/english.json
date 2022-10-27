@@ -1,0 +1,25 @@
+{
+    "nav": {
+        "bookRoute": {
+            "name": "Booking",
+            "link": "/"
+        },
+        "bookingHistory": {
+            "name": "Booking history",
+            "link": "/booking-history"
+        },
+        "bookingReport": {
+            "name": "Reporting",
+            "link": "/booking-report"
+        },
+        "administrate": "Administrate",
+        "adminCities": {
+            "name": "Cities",
+            "link": "/administrate-cities"
+        },
+        "adminBookings": {
+            "name": "Bookings",
+            "link": "/administrate-bookings"
+        }
+    }
+}

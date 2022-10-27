@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Mappers\" />
+    <Folder Include="Dtos\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\DbClient.csproj" />
+    <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\ExternalApiClient\ExternalApiClient.csproj" />
+  </ItemGroup>
+
+</Project>
