@@ -1,0 +1,5 @@
+# Ignore Visual Studio files
+*.vsidx
+
+# Ignore all subfolders named obj
+Services/**/obj/
