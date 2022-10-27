@@ -1,0 +1,12 @@
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\DbClient.deps.json
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\DbClient.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\bin\Debug\net6.0\DbClient.pdb
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.csproj.AssemblyReference.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.AssemblyInfoInputs.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.AssemblyInfo.cs
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.csproj.CoreCompileInputs.cache
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\refint\DbClient.dll
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\DbClient.pdb
+C:\Users\mrug\Desktop\Services\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\obj\Debug\net6.0\ref\DbClient.dll
