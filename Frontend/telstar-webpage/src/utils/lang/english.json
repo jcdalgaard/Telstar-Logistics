@@ -38,5 +38,14 @@
             "loading": "Loading...",
             "noResults": "No results..."
         }
+    },
+    "ResultsList": {
+        "fastestLabel": "Fastest",
+        "economicLabel": "Most economic",
+        "othersLabel": "Others",
+        "ResultsItem": {
+            "estimateLabel": "Expected delivered by:",
+            "routeLabel": "Route:"
+        }
     }
 }
