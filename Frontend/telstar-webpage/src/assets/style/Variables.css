@@ -6,7 +6,11 @@ html {
     --secondary-light-color: #edd9e1;
     --primary-contrast-color: #e9f6f3;
     --success-color: #c1d82f;
+    --color-white: #FFFFFF;
 
     /*Font weight*/
     --fw-bold: 600;
+
+    /*Border radius*/
+    --border-radius-normal: 10px;
 }

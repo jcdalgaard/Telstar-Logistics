@@ -10,7 +10,7 @@
         },
         "bookingReport": {
             "name": "Reporting",
-            "link": "/booking-report"
+            "link": "/reporting"
         },
         "administrate": "Administrate",
         "adminCities": {
@@ -38,5 +38,8 @@
             "loading": "Loading...",
             "noResults": "No results..."
         }
+    },
+    "reporting": {
+        "popularCities": "Popular cities"
     }
 }

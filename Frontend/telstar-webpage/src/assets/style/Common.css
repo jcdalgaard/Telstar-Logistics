@@ -1,4 +1,4 @@
-@import '~@/assets/style/Text.css';
+@import '~@/assets/style/Variables.css';
 @import '~@/assets/style/Background.css';
 @import '~@/assets/style/Button.css';
 
@@ -6,7 +6,7 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: start;
     color: #333333;
     font-size: 16px;
 }
@@ -41,7 +41,7 @@ a.light:hover {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 15px;
+    padding: 1.5rem 2rem;
 }
 
 .pop-shadow {
