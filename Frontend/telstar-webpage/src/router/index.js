@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import lang from '@/utils/lang/langBroker.js'
+import { login } from '@/state'
 
 Vue.use(VueRouter)
 
@@ -62,9 +63,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
-    console.log(isLoggedIn)
-    console.log(to.name === lang.nav.login.name)
     if (to.name !== lang.nav.login.name && !isLoggedIn) {
+        login.isLoggedIn = false
         next({ name: lang.nav.login.name })
     } else if (to.name === lang.nav.login.name && isLoggedIn) {
         next({ name: lang.nav.bookRoute.name })
