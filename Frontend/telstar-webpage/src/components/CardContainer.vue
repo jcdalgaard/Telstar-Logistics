@@ -22,6 +22,7 @@ export default {
 @import '~@/assets/style/Common.css';
 
 .card-container {
+    min-height: 100%;
     background-color: var(--color-white);
     border-radius: var(--border-radius-normal);
 }
