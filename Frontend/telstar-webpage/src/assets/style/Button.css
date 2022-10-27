@@ -1,4 +1,4 @@
-@import '~@/assets/style/Text.css';
+@import '~@/assets/style/Variables.css';
 
 .btn-telstar-primary {
     background-color: var(--primary-color) !important;

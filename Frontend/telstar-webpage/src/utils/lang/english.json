@@ -10,7 +10,7 @@
         },
         "bookingReport": {
             "name": "Reporting",
-            "link": "/booking-report"
+            "link": "/reporting"
         },
         "administrate": "Administrate",
         "adminCities": {
@@ -47,5 +47,9 @@
             "estimateLabel": "Expected delivered by:",
             "routeLabel": "Route:"
         }
+    },
+    "reporting": {
+        "popularCities": "Popular cities",
+        "popularRoutes": "Popular routes"
     }
 }

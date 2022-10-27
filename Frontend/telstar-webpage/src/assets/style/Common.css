@@ -1,4 +1,4 @@
-@import '~@/assets/style/Text.css';
+@import '~@/assets/style/Variables.css';
 @import '~@/assets/style/Background.css';
 @import '~@/assets/style/Button.css';
 
@@ -6,7 +6,7 @@
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    text-align: start;
     color: #333333;
     font-size: 16px;
 }
@@ -33,15 +33,16 @@ a.light:hover {
 }
 
 .view-container {
-    position: relative;
-    height: calc(100vh - 56px);
+    min-height: calc(100vh - var(--logo-height) - 1rem);
     left: 0;
     right: 0;
     background-image: url('~@/assets/img/telstar-bg.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 15px;
+    background-attachment: fixed;
+    margin-top: var(--navbar-height);
+    padding: 1.5rem 2rem;
 }
 
 .pop-shadow {
