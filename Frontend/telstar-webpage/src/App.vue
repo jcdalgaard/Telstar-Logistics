@@ -43,23 +43,5 @@
 </template>
 
 <style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
-
-.view-container {
-    position: relative;
-    height: calc(100vh - 56px);
-    left: 0;
-    right: 0;
-    background-image: url('~@/assets/img/telstar-bg.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 15px;
-}
+@import '~@/assets/style/Common.css';
 </style>
