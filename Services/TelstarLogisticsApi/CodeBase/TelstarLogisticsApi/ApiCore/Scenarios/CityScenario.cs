@@ -32,5 +32,20 @@ namespace ApiCore.Scenarios
                 }
             };
         }
+
+        public List<CityNameDto> GetAllCities()
+        {
+            return new List<CityNameDto>()
+            {
+                new CityNameDto()
+                {
+                    Name = "Sahara"
+                },
+                new CityNameDto()
+                {
+                    Name = "Hvalbugten"
+                }
+            };
+        }
     }
 }
