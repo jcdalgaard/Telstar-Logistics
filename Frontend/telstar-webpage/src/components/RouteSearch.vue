@@ -106,10 +106,6 @@
                         class="btn btn-lg btn-telstar-primary"
                     >
                         {{ lang.Search }}
-                        <font-awesome-icon
-                            icon="fa-solid fa-magnifying-glass"
-                            class="ml-2"
-                        />
                     </button>
                 </div>
             </div>

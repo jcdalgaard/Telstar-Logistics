@@ -55,6 +55,7 @@ namespace TelstarLogisticsApi
             // add archives
             services.AddSingleton<ITestArchive, TestArchive>();
             services.AddSingleton<IDbTestArchive, DbTestArchive>();
+            services.AddSingleton<ICityArchive, CityArchive>();
             services.AddSingleton<IContentTypeArchive, ContentTypeArchive>();
 
             // add scenarios

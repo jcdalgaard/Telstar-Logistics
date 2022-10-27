@@ -7,6 +7,11 @@
                 </CardContainer>
             </div>
             <div class="col-12 col-lg-6">
+                <CardContainer :title="lang.reporting.averageCost">
+                    <AverageCostTable :data="averageBookingCostTableData" />
+                </CardContainer>
+            </div>
+            <div class="col-12">
                 <CardContainer :title="lang.reporting.popularRoutes">
                     <BarChart
                         :data-sets="popularRoutesChartData"
@@ -22,14 +27,16 @@ import CardContainer from '@/components/CardContainer'
 import PieChart from '@/components/PieChart'
 import lang from '@/utils/lang/langBroker'
 import BarChart from '@/components/BarChart'
+import AverageCostTable from '@/components/AverageCostTable'
 
 export default {
-    components: { BarChart, PieChart, CardContainer },
+    components: { AverageCostTable, BarChart, PieChart, CardContainer },
     data() {
         return {
             popularCitiesChartData: [],
             popularRoutesChartData: [],
             popularRoutesThisMonthChartData: [],
+            averageBookingCostTableData: [],
             lang: lang,
         }
     },
@@ -47,10 +54,20 @@ export default {
             { name: 'Congo - Luanda', thisMonth: 66, total: 100 },
             { name: 'Wadai - Darfur', thisMonth: 15, total: 87 },
             { name: 'Mocambique - Zanzibar', thisMonth: 2, total: 53 },
+            { name: 'Cairo - Suakin', thisMonth: 25, total: 25 },
+            { name: 'Cairo - Omdurman', thisMonth: 0, total: 17 },
+            { name: 'Luanda - Kabalo', thisMonth: 2, total: 9 },
         ]
         this.popularRoutesThisMonthChartData = this.popularRoutesChartData.map(
             (entry) => ({ thisMonth: entry.thisMonth })
         )
+        this.averageBookingCostTableData = [
+            { id: 1, name: 'Sahara', value: 365.24 },
+            { id: 2, name: 'Darfur', value: 227.8 },
+            { id: 3, name: 'Congo', value: 203.89 },
+            { id: 4, name: 'Tripoli', value: 179 },
+            { id: 5, name: 'Timbuktu', value: 136.27 },
+        ]
     },
 }
 </script>

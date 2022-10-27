@@ -39,6 +39,21 @@
             "noResults": "No results..."
         }
     },
+    "BookingSummary": {
+        "header": "Booking summary",
+        "description": "Please look over the details of your booking, before placing it.",
+        "departureLabel": "Departure city:",
+        "destinationLabel": "Destination city:",
+        "estimatedArrivalLabel": "Estimated arrival:",
+        "priceLabel": "Price:",
+        "stopsLabel": "Stops:",
+        "confirm": "Confirm"
+    },
+    "BookingConfirmation": {
+        "header": "Booking confirmed",
+        "description": "Thank you for using Telstar Logistics.",
+        "return": "Return"
+    },
     "ResultsList": {
         "fastestLabel": "Fastest",
         "economicLabel": "Most economic",
@@ -50,6 +65,7 @@
     },
     "reporting": {
         "popularCities": "Popular cities",
-        "popularRoutes": "Popular routes"
+        "popularRoutes": "Popular routes",
+        "averageCost": "Average booking cost"
     }
 }

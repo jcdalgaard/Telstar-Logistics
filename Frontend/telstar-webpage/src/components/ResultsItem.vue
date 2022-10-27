@@ -1,7 +1,7 @@
 <template>
     <button
         class="btn container-fluid bg-telstar-primary-light shadow-sm rounded my-2 p-3 text-start"
-        @click="$emit('click')"
+        @click="$emit('click', route)"
     >
         <div class="row">
             <div class="col">
