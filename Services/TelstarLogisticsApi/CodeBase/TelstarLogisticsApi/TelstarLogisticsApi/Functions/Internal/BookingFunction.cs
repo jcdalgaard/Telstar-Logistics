@@ -21,9 +21,9 @@ namespace TelstarLogisticsApi.Functions.Internal
             _bookingScenario = bookingScenario;
         }
 
-        [FunctionName("GetContentTypes")]
+        [FunctionName("Bookings")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetContentTypes")]
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Bookings")]
             HttpRequest req,
             ILogger log)
         {
