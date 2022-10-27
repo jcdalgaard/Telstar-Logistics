@@ -100,9 +100,7 @@ export default {
         }
     },
     created() {
-        if (localStorage.getItem('isLoggedIn') === '1') {
-            login.isLoggedIn = true
-        }
+        login.isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
     },
     computed: {
         loggedIn() {
