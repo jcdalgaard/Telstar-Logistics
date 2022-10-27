@@ -33,14 +33,15 @@ a.light:hover {
 }
 
 .view-container {
-    position: relative;
-    height: calc(100vh - 56px);
+    min-height: calc(100vh - var(--logo-height) - 1rem);
     left: 0;
     right: 0;
     background-image: url('~@/assets/img/telstar-bg.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-top: var(--navbar-height);
     padding: 1.5rem 2rem;
 }
 

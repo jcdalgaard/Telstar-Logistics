@@ -13,4 +13,8 @@ html {
 
     /*Border radius*/
     --border-radius-normal: 10px;
+
+    /*Dimension*/
+    --logo-height: 4rem;
+    --navbar-height: calc(var(--logo-height) + 1rem);
 }
