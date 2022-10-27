@@ -2,4 +2,4 @@
 *.vsidx
 
 # Ignore all subfolders named obj
-Services/**/obj/
+obj/
