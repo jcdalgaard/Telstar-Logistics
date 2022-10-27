@@ -17,22 +17,24 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item mx-2">
-                            <router-link to="/">Book route</router-link>
+                            <router-link :to="lang.nav.bookRoute.link">{{
+                                lang.nav.bookRoute.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/route-history"
-                                >Booking History</router-link
-                            >
+                            <router-link :to="lang.nav.bookingHistory.link">{{
+                                lang.nav.bookingHistory.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/booking-report"
-                                >Reporting</router-link
-                            >
+                            <router-link :to="lang.nav.bookingReport.link">{{
+                                lang.nav.bookingReport.name
+                            }}</router-link>
                         </li>
                         <li class="nav-item mx-2">
-                            <router-link to="/admin-cities"
-                                >Administrate</router-link
-                            >
+                            <router-link :to="lang.nav.adminCities.link">{{
+                                lang.nav.adminCities.name
+                            }}</router-link>
                         </li>
                     </ul>
                 </div>
@@ -42,24 +44,19 @@
     </div>
 </template>
 
-<style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-}
+<script>
+import lang from '@/utils/lang/langBroker.js'
 
-.view-container {
-    position: relative;
-    height: calc(100vh - 56px);
-    left: 0;
-    right: 0;
-    background-image: url('~@/assets/img/telstar-bg.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 15px;
+export default {
+    name: 'App',
+    data() {
+        return {
+            lang: lang,
+        }
+    },
 }
+</script>
+
+<style>
+@import '~@/assets/style/Common.css';
 </style>
