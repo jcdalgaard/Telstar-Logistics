@@ -22,7 +22,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = "Sahara",
                         DestinationCty = "Sahara2",
                         EstimatedArrival = new DateTime(2022,10,28),
-                        Id = "213",
+                        Id = 123,
                         Price = 123.1,
                         Stops = 4
                     }
@@ -34,7 +34,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = "Sahara3",
                         DestinationCty = "Sahara4",
                         EstimatedArrival = new DateTime(2022,10,20),
-                        Id = "23",
+                        Id = 23,
                         Price = 13.1,
                         Stops = 1
                     }
