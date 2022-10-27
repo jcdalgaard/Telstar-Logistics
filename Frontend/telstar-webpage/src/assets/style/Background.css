@@ -1,0 +1,5 @@
+@import '~@/assets/style/Text.css';
+
+.bg-telstar-primary {
+    background-color: var(--primary-color) !important;
+}
