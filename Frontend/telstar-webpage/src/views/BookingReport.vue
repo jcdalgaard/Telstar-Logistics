@@ -67,11 +67,6 @@ export default {
             { id: 3, name: 'Congo', value: 203.89 },
             { id: 4, name: 'Tripoli', value: 179 },
             { id: 5, name: 'Timbuktu', value: 136.27 },
-            { id: 6, name: 'Timbuktu', value: 136.27 },
-            { id: 7, name: 'Timbuktu', value: 136.27 },
-            { id: 8, name: 'Timbuktu', value: 136.27 },
-            { id: 9, name: 'Timbuktu', value: 136.27 },
-            { id: 10, name: 'Timbuktu', value: 136.27 },
         ]
     },
 }
