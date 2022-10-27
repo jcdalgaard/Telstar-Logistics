@@ -20,7 +20,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse mx-4" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav me-auto">
                         <li class="nav-item mx-3 text-end text-lg-start">
                             <router-link
                                 class="nav-item-link light"
@@ -80,7 +80,61 @@
                                 </li>
                             </ul>
                         </li>
+                        <li
+                            class="nav-item dropdown mx-3 mt-5 text-end d-block d-lg-none"
+                        >
+                            <a
+                                class="dropdown-toggle nav-item-link light"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="true"
+                            >
+                                {{ lang.navBarProfile.greeting + loggedInUser }}
+                            </a>
+                            <ul
+                                class="dropdown-menu p-3 pop-shadow border-0"
+                                aria-labelledby="navbarDropdown"
+                            >
+                                <li class="text-end cursor-pointer">
+                                    <a
+                                        class="nav-item-link"
+                                        @click="handleLogout()"
+                                    >
+                                        {{ lang.navBarProfile.logout }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
+                    <div
+                        class="nav-item dropdown mx-3 text-end text-lg-start d-none d-lg-block"
+                    >
+                        <a
+                            class="dropdown-toggle nav-item-link light"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="true"
+                        >
+                            {{ lang.navBarProfile.greeting + loggedInUser }}
+                        </a>
+                        <ul
+                            class="dropdown-menu p-3 pop-shadow border-0"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <li class="cursor-pointer">
+                                <a
+                                    class="nav-item-link"
+                                    @click="handleLogout()"
+                                >
+                                    {{ lang.navBarProfile.logout }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -101,6 +155,7 @@ export default {
     },
     created() {
         login.isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
+        login.loggedInUser = localStorage.getItem('loggedInUser')
     },
     computed: {
         loggedIn() {
@@ -108,6 +163,14 @@ export default {
         },
         loggedInUser() {
             return login.loggedInUser
+        },
+    },
+    methods: {
+        async handleLogout() {
+            localStorage.clear()
+            login.isLoggedIn = false
+            login.loggedInUser = ''
+            await this.$router.push({ name: lang.nav.login.name })
         },
     },
 }

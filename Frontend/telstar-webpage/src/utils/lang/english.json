@@ -90,5 +90,9 @@
             "password": "Password"
         },
         "login": "Login"
+    },
+    "navBarProfile": {
+        "greeting": "Hello, ",
+        "logout": "Logout"
     }
 }
