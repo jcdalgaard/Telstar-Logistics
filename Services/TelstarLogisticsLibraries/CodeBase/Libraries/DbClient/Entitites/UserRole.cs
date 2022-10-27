@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DbClient.Entitites;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace TelstarLogistcs.DbClient.Entitites
 {
-    public class UserRole
+    public class UserRole : BaseModel
     {
-        [Key]
-        public int ID { get; set; }
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
     }
 }
