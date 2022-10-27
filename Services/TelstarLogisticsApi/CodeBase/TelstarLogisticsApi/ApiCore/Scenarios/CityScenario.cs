@@ -7,6 +7,7 @@ using ApiCore.Dtos;
 using ApiCore.Mappers;
 using ApiCore.Scenarios.Interfaces;
 using DbClient.Archives.Interfaces;
+using DbClient;
 
 namespace ApiCore.Scenarios
 {
@@ -21,6 +22,10 @@ namespace ApiCore.Scenarios
 
         public ConnectedCitiesDto GetConnectedCities(string cityName, double weight, string contentType)
         {
+
+            CalculateRoute cr = new CalculateRoute();
+            cr.Test();
+
             return new ConnectedCitiesDto()
             {
                 Provider = "TELSTAR THE WINNER OF CES 24.10.2022",

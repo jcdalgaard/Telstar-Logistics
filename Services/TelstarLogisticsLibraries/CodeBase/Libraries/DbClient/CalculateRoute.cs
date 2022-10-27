@@ -4,10 +4,10 @@
 // representation of the graph
 using System;
 
-class CalculateRoute
+public class CalculateRoute
 {
     // A utility function to find the
-    // vertex with minimum distance
+    // vertex with minimum distance 
     // value, from the set of vertices
     // not yet included in shortest
     // path tree
@@ -97,7 +97,7 @@ class CalculateRoute
     }
 
     // Driver Code
-    public static void Main()
+    public void Test()
     {
         /* Let us create the example 
 graph discussed above */
@@ -110,7 +110,10 @@ graph discussed above */
                                       { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
                                       { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
                                       { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
+        int[,] graph = som
+
         CalculateRoute t = new CalculateRoute();
         t.dijkstra(graph, 0);
+        System.Console.WriteLine("TEST RAN AND RETURNED");
     }
 }
