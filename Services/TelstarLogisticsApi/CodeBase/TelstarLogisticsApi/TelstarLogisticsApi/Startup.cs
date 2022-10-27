@@ -57,6 +57,7 @@ namespace TelstarLogisticsApi
             services.AddSingleton<ITestScenario, TestScenario>();
             services.AddSingleton<ICityScenario, CityScenario>();
             services.AddSingleton<IContentTypeScenario, ContentTypeScenario>();
+            services.AddSingleton<IRouteScenario, RouteScenario>();
 
 
 
