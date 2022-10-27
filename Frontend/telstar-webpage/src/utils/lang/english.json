@@ -67,6 +67,18 @@
             "routeLabel": "Route:"
         }
     },
+    "bookingHistory": {
+        "header": "History",
+        "routeItem": {
+            "departureLabel": "Departure City:",
+            "destinationLabel": "Destination City:",
+            "dateLabel": "Date:",
+            "priceLabel": "Price:",
+            "delete": "Delete",
+            "edit": "Edit",
+            "save": "Save"
+        }
+    },
     "reporting": {
         "popularCities": "Popular cities",
         "popularRoutes": "Popular routes",
