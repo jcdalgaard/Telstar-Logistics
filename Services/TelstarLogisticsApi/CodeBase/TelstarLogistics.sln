@@ -1,0 +1,88 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelstarLogisticsApi", "TelstarLogisticsApi\TelstarLogisticsApi\TelstarLogisticsApi.csproj", "{DC153971-1037-438C-8F56-8770C4E0AF2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelstarLogisticsShared", "..\..\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\TelstarLogisticsShared.csproj", "{3DDA2EB0-9331-45F9-87D7-88451994BCBA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{C255AC4F-D2CE-4E11-8CE6-4A94A11599C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Archives", "Archives", "{EB8F6EE8-EFD7-48F4-9E5A-DC2F3067BD58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbClient", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\DbClient.csproj", "{535510AE-7054-4661-B6F1-BFC36A31672B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExternalApiClient", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\ExternalApiClient\ExternalApiClient.csproj", "{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookingSystem", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\BookingSystem\BookingSystem.csproj", "{7C80CC1C-CBE8-4268-89BF-68D15E968D71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCore", "TelstarLogisticsApi\ApiCore\ApiCore.csproj", "{99F21BCD-97B6-4695-A679-2B9ABA1E68DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbClientTest", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\DbClientTest\DbClientTest.csproj", "{C0E3C790-2716-45CF-9752-DAC0B31FAEB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExternalApiClientTest", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\ExternalApiClientTest\ExternalApiClientTest.csproj", "{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingSystemTest", "..\..\TelstarLogisticsLibraries\CodeBase\Libraries\BookingSystemTest\BookingSystemTest.csproj", "{C0241672-B371-4844-B1EE-3C90A293EC05}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{63DE62C9-272D-42BC-A9F7-AA693D44EFB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC153971-1037-438C-8F56-8770C4E0AF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC153971-1037-438C-8F56-8770C4E0AF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC153971-1037-438C-8F56-8770C4E0AF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC153971-1037-438C-8F56-8770C4E0AF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DDA2EB0-9331-45F9-87D7-88451994BCBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DDA2EB0-9331-45F9-87D7-88451994BCBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DDA2EB0-9331-45F9-87D7-88451994BCBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DDA2EB0-9331-45F9-87D7-88451994BCBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{535510AE-7054-4661-B6F1-BFC36A31672B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{535510AE-7054-4661-B6F1-BFC36A31672B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{535510AE-7054-4661-B6F1-BFC36A31672B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{535510AE-7054-4661-B6F1-BFC36A31672B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C80CC1C-CBE8-4268-89BF-68D15E968D71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C80CC1C-CBE8-4268-89BF-68D15E968D71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C80CC1C-CBE8-4268-89BF-68D15E968D71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C80CC1C-CBE8-4268-89BF-68D15E968D71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F21BCD-97B6-4695-A679-2B9ABA1E68DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F21BCD-97B6-4695-A679-2B9ABA1E68DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F21BCD-97B6-4695-A679-2B9ABA1E68DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F21BCD-97B6-4695-A679-2B9ABA1E68DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E3C790-2716-45CF-9752-DAC0B31FAEB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E3C790-2716-45CF-9752-DAC0B31FAEB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E3C790-2716-45CF-9752-DAC0B31FAEB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E3C790-2716-45CF-9752-DAC0B31FAEB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0241672-B371-4844-B1EE-3C90A293EC05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0241672-B371-4844-B1EE-3C90A293EC05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0241672-B371-4844-B1EE-3C90A293EC05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0241672-B371-4844-B1EE-3C90A293EC05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DDA2EB0-9331-45F9-87D7-88451994BCBA} = {C255AC4F-D2CE-4E11-8CE6-4A94A11599C9}
+		{535510AE-7054-4661-B6F1-BFC36A31672B} = {EB8F6EE8-EFD7-48F4-9E5A-DC2F3067BD58}
+		{663CA6DD-0E3A-46B3-8F57-9A15B8FC15A7} = {EB8F6EE8-EFD7-48F4-9E5A-DC2F3067BD58}
+		{7C80CC1C-CBE8-4268-89BF-68D15E968D71} = {C255AC4F-D2CE-4E11-8CE6-4A94A11599C9}
+		{C0E3C790-2716-45CF-9752-DAC0B31FAEB6} = {63DE62C9-272D-42BC-A9F7-AA693D44EFB2}
+		{74BBB2D2-93A1-4A41-9281-AA7C3ED856C1} = {63DE62C9-272D-42BC-A9F7-AA693D44EFB2}
+		{C0241672-B371-4844-B1EE-3C90A293EC05} = {63DE62C9-272D-42BC-A9F7-AA693D44EFB2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {999C4112-AACF-479E-BE51-49D38BCE1F5B}
+	EndGlobalSection
+EndGlobal
