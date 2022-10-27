@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DbClient.Entitites
 {
     public class SegmentPrice : BaseModel
     {
-        private double Value { get; set; }
+        private double value { get; set; }
+
+        public double GetValue()
+        {
+            return value;
+        }
     }
 }

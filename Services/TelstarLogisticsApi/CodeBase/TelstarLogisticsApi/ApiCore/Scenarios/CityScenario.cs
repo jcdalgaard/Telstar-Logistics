@@ -7,38 +7,53 @@ using ApiCore.Dtos;
 using ApiCore.Mappers;
 using ApiCore.Scenarios.Interfaces;
 using DbClient.Archives.Interfaces;
+using DbClient.Entitites;
 
 namespace ApiCore.Scenarios
 {
     public class CityScenario : ICityScenario
     {
         private readonly ICityArchive _cityArchive;
+        private readonly IRouteArchive _routeArchive;
+        private readonly ISegmentPriceArchive _segmentPriceArchive;
 
-        public CityScenario(ICityArchive cityArchive)
+        public CityScenario(ICityArchive cityArchive, IRouteArchive routeArchive, ISegmentPriceArchive segmentPriceArchive)
         {
             _cityArchive = cityArchive;
+            _routeArchive = routeArchive;
+            _segmentPriceArchive = segmentPriceArchive;
         }
 
         public ConnectedCitiesDto GetConnectedCities(string cityName, double weight, string contentType)
         {
-            return new ConnectedCitiesDto()
+            if (contentType.ToLower() == "weapons" || weight > 40 * 1000)
             {
-                Provider = "TELSTAR THE WINNER OF CES 24.10.2022",
-                ConnectedCities = new List<CityDto>()
+                return new ConnectedCitiesDto();
+            }
+
+            var id = _cityArchive.GetIdByName(cityName);
+            var routesContainCity = _routeArchive.GetRoutesThatIncludeTheCity(id);
+            var adjacentCities = new HashSet<CityDto>();
+            foreach (var route in routesContainCity)
+            {
+                var city1 = _cityArchive.GetById(route.FirstCityID);
+                var city2 = _cityArchive.GetById(route.SecondCityID);
+
+                var routePrice = _segmentPriceArchive.GetById(route.SegmentPriceID).GetValue() * route.NumberOfSegments;
+                var adjacent = new CityDto
                 {
-                    new CityDto()
-                    {
-                        CityName = "Sahara",
-                        Price = 123.1723,
-                        Duration = 51
-                    },
-                    new CityDto()
-                    {
-                        CityName = "Hvalbugten",
-                        Price = 53.1723,
-                        Duration = 16
-                    },
-                }
+                    Price = routePrice,
+                    Duration = route.Duration,
+                };
+   
+                adjacent.CityName = (city1.ID != id) ? city1.Name : city2.Name;
+                adjacentCities.Add(adjacent);
+            }
+
+            return new ConnectedCitiesDto
+            {
+                Provider = "",
+                ConnectedCities = adjacentCities.ToList(),
             };
         }
 

@@ -4,18 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DbClient.Entitites;
-using TelstarLogistics.DbClient.Setup;
 
 namespace DbClient.Archives.Interfaces
 {
-    public interface ICityArchive
+    public interface ISegmentPriceArchive
     {
-        IEnumerable<City> GetAllCities();
-
-        int GetIdByName(
-            string cityName);
-
-        City GetById(
+        SegmentPrice GetById(
             int id);
     }
 }
