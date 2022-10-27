@@ -3,4 +3,9 @@
 .btn-telstar-primary {
     background-color: var(--primary-color) !important;
     color: white !important;
+    transition: opacity 0.25s !important;
+}
+
+.btn-telstar-primary:hover {
+    opacity: 0.6;
 }
