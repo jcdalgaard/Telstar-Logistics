@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "g/k64FN5Y29UGQN3Qqo8/YHK50B2VpXdI1afx85a/KhYVd1b/CIK/0ef8G3pewpLBvoMo4/FwERXW8iIxs7AWg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mrug\\Desktop\\Services\\TelstarLogisticsShared\\CodeBase\\TelstarLogisticsShared\\TelstarLogisticsShared.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mrug\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\mrug\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\mrug\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\mrug\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
