@@ -1,9 +1,33 @@
+@import '~@/assets/style/Text.css';
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #333333;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+a:not(.light) {
+    color: #333333 !important;
+}
+
+a:hover {
+    opacity: 0.6;
+}
+
+a.light {
+    color: var(--primary-contrast-color);
+    transition: opacity 0.25s;
+}
+
+a.light:hover {
+    color: var(--primary-contrast-color);
 }
 
 .view-container {
@@ -16,4 +40,8 @@
     background-size: cover;
     background-repeat: no-repeat;
     padding: 15px;
+}
+
+.pop-shadow {
+    box-shadow: 5px 5px 10px #333333;
 }
