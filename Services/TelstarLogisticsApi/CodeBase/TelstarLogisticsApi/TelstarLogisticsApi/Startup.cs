@@ -1,4 +1,7 @@
-﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using ApiCore.Scenarios;
+using ApiCore.Scenarios.Interfaces;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -6,7 +9,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using TelstarLogistics.DbClient.Archives;
+using TelstarLogistics.DbClient.Archives.Interfaces;
+using TelstarLogistics.DbClient.Setup;
 using TelstarLogistics.ExternalApiClient;
+using TelstarLogistics.ExternalApiClient.Archives;
+using TelstarLogistics.ExternalApiClient.Archives.Interfaces;
 using TelstarLogistics.TelstarLogisticsShared.Interfaces;
 
 [assembly: FunctionsStartup(typeof(TelstarLogisticsApi.Startup))]
@@ -16,14 +24,14 @@ namespace TelstarLogisticsApi
     {
         private static readonly IReadOnlyList<IServiceManager> ProjectDependencies = new IServiceManager[]
         {
-            //new DbClient.ServiceRegistration(),
+            new TelstarLogistics.DbClient.ServiceManager()
         };
 
         public override void Configure(IFunctionsHostBuilder builder)
         {
-            //builder.Services
-            //    .AddOptions<Options>()
-            //    .Configure<IConfiguration>((settings, configuration) => { configuration.Bind("Options", settings); });
+            builder.Services
+                .AddOptions<DbSettings>()
+                .Configure<IConfiguration>((settings, configuration) => { configuration.Bind("DbSettings", settings); });
 
             //builder.Services.AddLogging();
             ConfigureServices(builder.Services);
@@ -33,8 +41,6 @@ namespace TelstarLogisticsApi
             // add http client
             services.AddHttpClient<IExternalApiClient, ExternalApiClient>();
 
-            // Add fdcp repositories
-            //services.AddSingleton<ITestRepository, TestRepository>();
 
             // Configure services from shared projects
             foreach (var projectDependency in ProjectDependencies)
@@ -43,10 +49,11 @@ namespace TelstarLogisticsApi
             }
 
             // add archives
-            //services.AddSingleton<IArchive, Archive>();
+            services.AddSingleton<ITestArchive, TestArchive>();
+            services.AddSingleton<IDbTestArchive, DbTestArchive>();
 
             // add scenarios
-            //services.AddSingleton<IScenarions, Scenarions>();
+            services.AddSingleton<ITestScenario, TestScenario>();
 
 
 

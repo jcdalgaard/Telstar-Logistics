@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g/k64FN5Y29UGQN3Qqo8/YHK50B2VpXdI1afx85a/KhYVd1b/CIK/0ef8G3pewpLBvoMo4/FwERXW8iIxs7AWg==",
+  "dgSpecHash": "jK/gqvzRjsoB3EuRGQB/hd/Y429Y/TYHLmIIfpH13UV+94tD5XyLIfOrCsZb657w52zvr7sgr7R/7O9r5vxt+g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mrug\\Desktop\\Services\\TelstarLogisticsShared\\CodeBase\\TelstarLogisticsShared\\TelstarLogisticsShared.csproj",
+  "projectFilePath": "C:\\Users\\mrug\\Desktop\\Telstar-Logistics\\Services\\TelstarLogisticsShared\\CodeBase\\TelstarLogisticsShared\\TelstarLogisticsShared.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mrug\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\mrug\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",

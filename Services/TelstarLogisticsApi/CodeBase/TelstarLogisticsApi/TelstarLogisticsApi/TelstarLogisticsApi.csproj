@@ -14,6 +14,7 @@
     <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\DbClient\DbClient.csproj" />
     <ProjectReference Include="..\..\..\..\TelstarLogisticsLibraries\CodeBase\Libraries\ExternalApiClient\ExternalApiClient.csproj" />
     <ProjectReference Include="..\..\..\..\TelstarLogisticsShared\CodeBase\TelstarLogisticsShared\TelstarLogisticsShared.csproj" />
+    <ProjectReference Include="..\ApiCore\ApiCore.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

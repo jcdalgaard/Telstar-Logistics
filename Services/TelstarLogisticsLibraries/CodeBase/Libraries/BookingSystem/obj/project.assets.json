@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mrug\\Desktop\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\BookingSystem.csproj",
+      "projectUniqueName": "C:\\Users\\mrug\\Desktop\\Telstar-Logistics\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\BookingSystem.csproj",
       "projectName": "BookingSystem",
-      "projectPath": "C:\\Users\\mrug\\Desktop\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\BookingSystem.csproj",
+      "projectPath": "C:\\Users\\mrug\\Desktop\\Telstar-Logistics\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\BookingSystem.csproj",
       "packagesPath": "C:\\Users\\mrug\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mrug\\Desktop\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\obj\\",
+      "outputPath": "C:\\Users\\mrug\\Desktop\\Telstar-Logistics\\Services\\TelstarLogisticsLibraries\\CodeBase\\Libraries\\BookingSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

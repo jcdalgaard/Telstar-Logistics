@@ -8,5 +8,6 @@ namespace TelstarLogistics.DbClient
 {
     public interface IDbClient
     {
+        void RunCommand(string queryString);
     }
 }
