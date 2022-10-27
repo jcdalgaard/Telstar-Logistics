@@ -3,7 +3,11 @@ html {
     --primary-color: #26A78A;
     --primary-contrast-color: #E9F6F3;
     --success-color: #C1D82F;
+    --color-white: #FFFFFF;
 
     /*Font weight*/
     --fw-bold: 600;
+
+    /*Border radius*/
+    --border-radius-normal: 10px;
 }
