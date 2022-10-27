@@ -68,6 +68,7 @@
     },
     "reporting": {
         "popularCities": "Popular cities",
-        "popularRoutes": "Popular routes"
+        "popularRoutes": "Popular routes",
+        "averageCost": "Average booking cost"
     }
 }

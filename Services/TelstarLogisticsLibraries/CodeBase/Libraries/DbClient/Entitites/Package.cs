@@ -9,10 +9,21 @@ namespace DbClient.Entitites
 {
     public class Package : BaseModel
     {
+        [ForeignKey("Booking")]
         public int BookingID { get; set; }
 
-        public float Weight;
+        public Booking Booking { get; set; } = new Booking();
+
+        public double Weight;
+
+        [ForeignKey("PackageContentType")]
+        public int PackageContentTypeID { get; set; }
+
         public PackageContentType PackageContentType { get; set; } = new PackageContentType();
+
+        [ForeignKey("PackageSizeType")]
+        public int PackageSizeTypeID { get; set; }
+
         public PackageSizeType PackageSizeType { get; set; } = new PackageSizeType();
     }
 }

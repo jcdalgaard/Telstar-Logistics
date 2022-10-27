@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DbClient.Entitites;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,21 @@ namespace TelstarLogistics.DbClient.Setup
             options.UseSqlServer(_dbOptions.Value.ConnectionString);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<BookingRouteRef>().HasKey(x => new { x.BookingID, x.RouteID });
+        }
+
+        public DbSet<Booking> Booking { get; set; }
+        public DbSet<BookingRouteRef> BookingRouteRef { get; set; }
+        public DbSet<BookingStatus> BookingStatus { get; set; }
+        public DbSet<City> City { get; set; }
+        public DbSet<Package> Package { get; set; }
+        public DbSet<PackageContentType> PackageContentType { get; set; }
+        public DbSet<PackageSizeType> PackageSizeType { get; set; }
+        public DbSet<Route> Route { get; set; }
+        public DbSet<SegmentPrice> SegmentPrice { get; set; }
+        public DbSet<User> User { get; set; }
         public DbSet<UserRole> UserRole { get; set; }
     }
 }
