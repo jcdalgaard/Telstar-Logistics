@@ -1,0 +1,9 @@
+@import '~@/assets/style/Text.css';
+
+.bg-telstar-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.bg-telstar-secondary-light {
+    background-color: var(--secondary-light-color) !important;
+}
