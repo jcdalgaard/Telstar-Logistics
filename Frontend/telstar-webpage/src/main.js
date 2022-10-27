@@ -17,10 +17,18 @@ import {
     faSnowflake,
     faPaw,
     faMartiniGlass,
+    faChevronRight,
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faMagnifyingGlass, faPaperPlane, faSnowflake, faPaw, faMartiniGlass)
+library.add(
+    faMagnifyingGlass,
+    faPaperPlane,
+    faSnowflake,
+    faPaw,
+    faMartiniGlass,
+    faChevronRight
+)
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)

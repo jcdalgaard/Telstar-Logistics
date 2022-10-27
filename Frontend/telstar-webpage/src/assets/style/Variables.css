@@ -1,7 +1,7 @@
 html {
     /*Colors*/
     --primary-color: #26a78a;
-    --primart-light-color: #e9f6f3;
+    --primary-light-color: #e9f6f3;
     --secondary-color: #bb0038;
     --secondary-light-color: #edd9e1;
     --primary-contrast-color: #e9f6f3;
@@ -17,4 +17,8 @@ html {
     /*Dimension*/
     --logo-height: 4rem;
     --navbar-height: calc(var(--logo-height) + 1rem);
+}
+
+.text-telstar-primary {
+    color: var(--primary-color);
 }

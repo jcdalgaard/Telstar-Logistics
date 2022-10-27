@@ -41,7 +41,7 @@
                 v-for="(option, index) in searchOptions"
                 :key="`route-option-${index}`"
             >
-                {{ option }}
+                {{ option.name }}
             </div>
         </div>
     </div>
@@ -91,7 +91,7 @@ export default {
         searchOptions() {
             if (Array.isArray(this.options))
                 return this.options.filter((option) =>
-                    option.toLowerCase().includes(this.value.toLowerCase())
+                    option.name.toLowerCase().includes(this.value.toLowerCase())
                 )
             else return []
         },
