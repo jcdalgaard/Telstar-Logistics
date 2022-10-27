@@ -10,28 +10,26 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-namespace TelstarLogisticsApi.Functions.External
+namespace TelstarLogisticsApi.Functions.Internal
 {
-    public class ContentTypes
+    public class CityFunction
     {
-        private readonly IContentTypeScenario _contentTypeScenario;
+        private readonly ICityScenario _cityScenario;
 
-
-        public ContentTypes(IContentTypeScenario contentTypeScenario)
+        public CityFunction(ICityScenario cityScenario)
         {
-            _contentTypeScenario = contentTypeScenario;
+            _cityScenario = cityScenario;
         }
 
-        [FunctionName("GetContentTypes")]
+        [FunctionName("GetCities")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetContentTypes")]
-            HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "GetCities")] HttpRequest req,
             ILogger log)
         {
             try
             {
                 log.LogInformation("C# HTTP trigger function processed a request.");
-                var result = _contentTypeScenario.GetContentTypes();
+                var result = _cityScenario.GetAllCities();
 
                 string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
 
@@ -44,5 +42,3 @@ namespace TelstarLogisticsApi.Functions.External
         }
     }
 }
-
-

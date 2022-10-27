@@ -7,9 +7,8 @@ using ApiCore.Dtos;
 
 namespace ApiCore.Scenarios.Interfaces
 {
-    public interface ICityScenario
+    public interface IRouteScenario
     {
-        public ConnectedCitiesDto GetConnectedCities(string cityName, double weight, string contentType);
-        public List<CityNameDto> GetAllCities();
+        public BestRoutesDto GetRoutes();
     }
 }

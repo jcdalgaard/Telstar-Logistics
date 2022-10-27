@@ -11,11 +11,11 @@ using ApiCore.Scenarios.Interfaces;
 
 namespace TelstarLogisticsApi
 {
-    public class Cities
+    public class CityFunction
     {
         private readonly ICityScenario _cityScenario;
 
-        public Cities(ICityScenario cityScenario)
+        public CityFunction(ICityScenario cityScenario)
         {
             _cityScenario = cityScenario;
         }
