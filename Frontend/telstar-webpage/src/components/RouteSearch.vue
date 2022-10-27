@@ -18,6 +18,26 @@
                             />
                         </div>
                     </div>
+                    <div class="row px-2">
+                        <div class="col">
+                            <div class="form-check text-start">
+                                <input
+                                    v-model="expressDeliery"
+                                    class="form-check-input border border-secondary"
+                                    :class="
+                                        expressDeliery && 'bg-telstar-primary'
+                                    "
+                                    type="checkbox"
+                                    id="flexSwitchCheckDefault"
+                                />
+                                <label
+                                    class="form-check-label"
+                                    for="flexSwitchCheckDefault"
+                                    >Default switch checkbox input</label
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col">
                     <div class="row">
@@ -65,9 +85,19 @@
                     </div>
                 </div>
             </div>
-            <div class="row p-2">
-                <div class="col d-flex justify-content-end">
-                    <button type="submit" class="btn btn-lg btn-primary">
+            <div class="row d-flex align-items-end p-2">
+                <div class="col text-start">
+                    <p class="my-0 py-0">
+                        * Additional costs may apply <br />
+                        Max weight 40kg <br />
+                        No weapons allowed
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <button
+                        type="submit"
+                        class="btn btn-lg btn-telstar-primary"
+                    >
                         Search
                         <font-awesome-icon
                             icon="fa-solid fa-magnifying-glass"
@@ -98,6 +128,7 @@ export default {
             refridgeratedGoods: false,
             liveAnimals: false,
             cautiousParcels: false,
+            expressDeliery: false,
         }
     },
     methods: {

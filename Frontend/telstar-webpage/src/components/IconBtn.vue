@@ -1,7 +1,7 @@
 <template>
     <button
         class="btn d-flex flex-column align-items-center justify-content-center rounded my-1 w-100"
-        :class="checked && 'bg-telstar-primary'"
+        :class="checked && 'bg-telstar-secondary-light'"
         type="button"
         @click=";(checked = !checked), $emit('click', checked)"
     >
