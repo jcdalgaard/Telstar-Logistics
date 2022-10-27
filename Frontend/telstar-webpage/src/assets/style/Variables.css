@@ -1,8 +1,11 @@
 html {
     /*Colors*/
-    --primary-color: #26A78A;
-    --primary-contrast-color: #E9F6F3;
-    --success-color: #C1D82F;
+    --primary-color: #26a78a;
+    --primart-light-color: #e9f6f3;
+    --secondary-color: #bb0038;
+    --secondary-light-color: #edd9e1;
+    --primary-contrast-color: #e9f6f3;
+    --success-color: #c1d82f;
     --color-white: #FFFFFF;
 
     /*Font weight*/
