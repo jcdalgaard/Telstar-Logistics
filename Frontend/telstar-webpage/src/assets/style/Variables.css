@@ -16,6 +16,7 @@ html {
 
     /*Dimension*/
     --logo-height: 4rem;
+    --logo-height-large: 6rem;
     --navbar-height: calc(var(--logo-height) + 1rem);
 }
 

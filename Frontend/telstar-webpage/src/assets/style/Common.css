@@ -45,6 +45,27 @@ a.light:hover {
     padding: 1.5rem 2rem;
 }
 
+.telstar-logo {
+     height: var(--logo-height);
+ }
+
+.telstar-logo.large {
+     height: var(--logo-height-large);
+ }
+
+.telstar-logo img {
+    height: 100%;
+}
+
+.view-container.full-screen {
+    margin: 0;
+    height: 100vh;
+}
+
 .pop-shadow {
     box-shadow: 5px 5px 10px #333333;
+}
+
+.h-fit-content{
+    height: fit-content;
 }

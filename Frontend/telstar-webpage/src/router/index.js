@@ -6,8 +6,15 @@ Vue.use(VueRouter)
 
 const routes = [
     {
+        path: `${lang.nav.login.link}`,
+        name: `${lang.nav.login.name}`,
+        component: () =>
+            import(/* webpackChunkName: "login" */ '../views/LoginPage.vue'),
+    },
+    {
         path: `${lang.nav.bookRoute.link}`,
         name: `${lang.nav.bookRoute.name}`,
+
         component: () =>
             import(
                 /* webpackChunkName: "book-route" */ '../views/BookRoute.vue'
@@ -51,6 +58,19 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes,
+})
+
+router.beforeEach((to, from, next) => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
+    console.log(isLoggedIn)
+    console.log(to.name === lang.nav.login.name)
+    if (to.name !== lang.nav.login.name && !isLoggedIn) {
+        next({ name: lang.nav.login.name })
+    } else if (to.name === lang.nav.login.name && isLoggedIn) {
+        next({ name: lang.nav.bookRoute.name })
+    } else {
+        next()
+    }
 })
 
 export default router
