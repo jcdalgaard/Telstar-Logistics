@@ -87,6 +87,11 @@ export default {
                 plugins: {
                     legend: {
                         position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 16,
+                            },
+                        },
                     },
                 },
             },
