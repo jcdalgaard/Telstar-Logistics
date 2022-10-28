@@ -9,6 +9,6 @@ namespace ApiCore.Scenarios.Interfaces
 {
     public interface IRouteScenario
     {
-        public BestRoutesDto GetRoutes();
+        public BestRoutesDto GetRoutes(string from, string to);
     }
 }

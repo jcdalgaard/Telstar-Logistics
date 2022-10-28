@@ -145,7 +145,16 @@ public class CalculateRoute
         System.Console.WriteLine("CityFrom: " + src);
         System.Console.WriteLine("CityTo: " + target);
         System.Console.WriteLine("NumberOfSteps!!!!!!: " + Steps);
-        Route cheapestRoute = new Route();
+        Route cheapestRoute = new Route()
+        {
+            FirstCityID = src,
+            FirstCity = new City() { ID = src},
+            SecondCityID = target,
+            SecondCity = new City() { ID = target },
+            NumberOfSegments = Steps,
+            SegmentPrice = new SegmentPrice() { Value = 1},
+        };
+   
         return cheapestRoute;
     }
 

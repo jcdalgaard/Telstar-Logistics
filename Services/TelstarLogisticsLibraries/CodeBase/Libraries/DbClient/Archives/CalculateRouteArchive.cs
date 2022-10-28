@@ -22,5 +22,10 @@ namespace DbClient.Archives
         {
             return _dataContext.Route.ToList();
         }
+
+        public int GetCityID(string city)
+        {
+            return _dataContext.City.Where(x => x.Name == city).Select(x => x.ID).Single();
+        }
     }
 }

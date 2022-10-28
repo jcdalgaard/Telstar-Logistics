@@ -21,7 +21,7 @@ namespace ApiCore.Scenarios
             _calculateRouteArchive = calculateRouteArchive;
         }
 
-        public BestRoutesDto GetRoutes()
+        public BestRoutesDto GetRoutes(string from, string to)
         {
             /*return new BestRoutesDto()
             {
@@ -51,9 +51,11 @@ namespace ApiCore.Scenarios
                 }
             */
             List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
+            int start = _calculateRouteArchive.GetCityID(from);
+            int end = _calculateRouteArchive.GetCityID(to);
             CalculateRoute cr = new CalculateRoute();
-            int start = 22;
-            int end = 5;
+            //int start = 22;
+            //int end = 5;
             Route cheapestRoute = cr.calculateCheapestRoute(AllRoutes, start, end);
             //Route fastestRoute =
             return new BestRoutesDto()
@@ -62,8 +64,8 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = cheapestRoute.FirstCity.Name,
-                        DestinationCty = cheapestRoute.SecondCity.Name,
+                        DepartureCity = from,
+                        DestinationCty = to,
                         EstimatedArrival = new DateTime(2022,10,20),
                         Id = "23", // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,

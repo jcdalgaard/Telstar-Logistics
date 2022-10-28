@@ -11,5 +11,6 @@ namespace DbClient.Archives.Interfaces
     public interface ICalculateRouteArchive
     {
         List<Route> GetAllRoutes();
+        int GetCityID(string city);
     }
 }
