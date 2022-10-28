@@ -40,5 +40,45 @@ namespace TelstarLogisticsApi.Functions.Internal
                 return new OkObjectResult($"Error: {ex.Message}");
             }
         }
+
+        [FunctionName("MostPopularCities")]
+        public async Task<IActionResult> Run2(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "cities/mostPopular")] HttpRequest req,
+            ILogger log)
+        {
+            try
+            {
+                log.LogInformation("C# HTTP trigger function processed a request.");
+                var result = _cityScenario.GetMostPopularCities();
+
+                string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
+
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult($"Error: {ex.Message}");
+            }
+        }
+
+        [FunctionName("MostExpensiveCities")]
+        public async Task<IActionResult> Run3(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "cities/mostExpensive")] HttpRequest req,
+            ILogger log)
+        {
+            try
+            {
+                log.LogInformation("C# HTTP trigger function processed a request.");
+                var result = _cityScenario.GetMostExpensiveCities();
+
+                string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
+
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult($"Error: {ex.Message}");
+            }
+        }
     }
 }

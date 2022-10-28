@@ -10,5 +10,7 @@ namespace ApiCore.Scenarios.Interfaces
     public interface IRouteScenario
     {
         public BestRoutesDto GetRoutes();
+
+        public List<TopRouteDto> GetMostPopularRoutes();
     }
 }
