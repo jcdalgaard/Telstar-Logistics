@@ -28,7 +28,8 @@
     },
     "BookRoute": {
         "RouteSearch": {
-            "Search": "Search",
+            "search": "Search",
+            "map": "Map",
             "From": "From",
             "To": "To",
             "recordedDelivery": "Recorded delivery*",
@@ -107,7 +108,7 @@
         },
         "login": "Login"
     },
-    "navBar" : {
+    "navBar": {
         "profile": {
             "greeting": "Hello, ",
             "logout": "Logout"
