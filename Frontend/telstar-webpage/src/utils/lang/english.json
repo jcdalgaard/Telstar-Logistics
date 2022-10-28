@@ -79,6 +79,22 @@
             "save": "Save"
         }
     },
+    "adminBookings": {
+        "header": "Registered bookings",
+        "add": "Add",
+        "routeItem": {
+            "departureLabel": "Departure City:",
+            "destinationLabel": "Destination City:",
+            "dateLabel": "Date:",
+            "priceLabel": "Price:",
+            "delete": "Delete",
+            "edit": "Edit",
+            "save": "Save"
+        }
+    },
+    "adminCities": {
+        "header": "Cities"
+    },
     "reporting": {
         "popularCities": "Popular cities",
         "popularRoutes": "Popular routes",

@@ -24,6 +24,7 @@ import {
     faX,
     faChevronDown,
     faPenToSquare,
+    faPlus,
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
@@ -36,7 +37,8 @@ library.add(
     faChevronRight,
     faX,
     faChevronDown,
-    faPenToSquare
+    faPenToSquare,
+    faPlus
 )
 
 /* add font awesome icon component */
