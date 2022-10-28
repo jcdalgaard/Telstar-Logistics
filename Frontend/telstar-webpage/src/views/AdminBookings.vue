@@ -27,7 +27,6 @@ export default {
     },
     data() {
         return {
-            lang: lang.adminBookings,
             routeList: [],
         }
     },

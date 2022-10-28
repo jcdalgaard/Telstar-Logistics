@@ -237,7 +237,7 @@ export default {
         },
         async getCities() {
             this.$http
-                .get('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
+                .post('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
                 .then((body) => {
                     this.optionsList = body.data
                 })
