@@ -11,6 +11,7 @@ namespace DbClient.Entitites
     {
         public DateTime ArrivalDate { get; set; }
         public DateTime BookedDate { get; set; }
+        public double Price { get; set; }
         public List<BookingRouteRef> Routes { get; set; } = new List<BookingRouteRef>();
         public List<Package> Packages { get; set; } = new List<Package>();
 

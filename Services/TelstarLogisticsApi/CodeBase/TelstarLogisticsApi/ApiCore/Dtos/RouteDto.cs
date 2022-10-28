@@ -9,7 +9,7 @@ namespace ApiCore.Dtos
 {
     public class RouteDto
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string DepartureCity { get; set; }
         public string DestinationCty { get; set; }
         public double Price { get; set; }

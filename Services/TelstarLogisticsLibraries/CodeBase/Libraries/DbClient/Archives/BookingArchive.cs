@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DbClient.Archives.Interfaces;
 using DbClient.Entitites;
+using Microsoft.EntityFrameworkCore;
 using TelstarLogistics.DbClient.Setup;
 
 namespace DbClient.Archives
@@ -17,6 +18,17 @@ namespace DbClient.Archives
         {
             _dataContext = dataContext;
         }
+
+        public IEnumerable<Booking> GetAllBookings()
+        {
+            return _dataContext.Booking.Where(b=> b != null).AsEnumerable();
+        }
+
+        public IEnumerable<Booking> GetAllBookingsByUser(int userId)
+        {
+            return _dataContext.Booking.Include(b=>b.Packages).Include(b=>b.Routes).Where(b=>b.UserID == userId).AsEnumerable();
+        }
+
         public bool AddBooking(Booking booking)
         {
             _dataContext.Booking.Add(booking);

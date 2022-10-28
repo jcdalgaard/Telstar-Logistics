@@ -14,8 +14,10 @@ namespace ApiCore.Mappers
         {
             return new Booking()
             {
+                ID = routeDto.Id,
                 ArrivalDate = routeDto.EstimatedArrival,
-                BookedDate = DateTime.Now
+                BookedDate = DateTime.Now,
+                Price = routeDto.Price
             };
         }
     }
