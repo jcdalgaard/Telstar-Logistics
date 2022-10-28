@@ -33,10 +33,10 @@
             "From": "From",
             "To": "To",
             "recordedDelivery": "Recorded delivery*",
-            "refridgeratedGoods": "Refridgerated goods*",
+            "refridgeratedGoods": "Refrigerated goods*",
             "liveAnimals": "Live animals*",
             "cautiousParcels": "Cautious parcels*",
-            "expressDeliery": "Express deliery*",
+            "expressDeliery": "Express delivery*",
             "additionalCost": "* Additional cost may apply",
             "maxWeight": "Max weight 40Kg",
             "noWeapons": "No weapons",
@@ -94,7 +94,8 @@
         }
     },
     "adminCities": {
-        "header": "Cities"
+        "header": "Cities",
+        "routes": "Routes"
     },
     "reporting": {
         "popularCities": "Popular cities",

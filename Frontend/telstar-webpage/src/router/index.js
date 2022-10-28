@@ -7,14 +7,14 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-        path: `${lang.nav.login.link}`,
-        name: `${lang.nav.login.name}`,
+        path: `${lang.current.nav.login.link}`,
+        name: `${lang.current.nav.login.name}`,
         component: () =>
             import(/* webpackChunkName: "login" */ '../views/LoginPage.vue'),
     },
     {
-        path: `${lang.nav.bookRoute.link}`,
-        name: `${lang.nav.bookRoute.name}`,
+        path: `${lang.current.nav.bookRoute.link}`,
+        name: `${lang.current.nav.bookRoute.name}`,
 
         component: () =>
             import(
@@ -22,32 +22,32 @@ const routes = [
             ),
     },
     {
-        path: `${lang.nav.bookingHistory.link}`,
-        name: `${lang.nav.bookingHistory.name}`,
+        path: `${lang.current.nav.bookingHistory.link}`,
+        name: `${lang.current.nav.bookingHistory.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "route-history" */ '../views/RouteHistory.vue'
             ),
     },
     {
-        path: `${lang.nav.bookingReport.link}`,
-        name: `${lang.nav.bookingReport.name}`,
+        path: `${lang.current.nav.bookingReport.link}`,
+        name: `${lang.current.nav.bookingReport.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "booking-report" */ '../views/BookingReport.vue'
             ),
     },
     {
-        path: `${lang.nav.adminCities.link}`,
-        name: `${lang.nav.adminCities.name}`,
+        path: `${lang.current.nav.adminCities.link}`,
+        name: `${lang.current.nav.adminCities.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "admin-cities" */ '../views/AdminCities.vue'
             ),
     },
     {
-        path: `${lang.nav.adminBookings.link}`,
-        name: `${lang.nav.adminBookings.name}`,
+        path: `${lang.current.nav.adminBookings.link}`,
+        name: `${lang.current.nav.adminBookings.name}`,
         component: () =>
             import(
                 /* webpackChunkName: "admin-bookings" */ '../views/AdminBookings.vue'
@@ -63,11 +63,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
-    if (to.name !== lang.nav.login.name && !isLoggedIn) {
+    if (to.name !== lang.current.nav.login.name && !isLoggedIn) {
         login.isLoggedIn = false
-        next({ name: lang.nav.login.name })
-    } else if (to.name === lang.nav.login.name && isLoggedIn) {
-        next({ name: lang.nav.bookRoute.name })
+        next({ name: lang.current.nav.login.name })
+    } else if (to.name === lang.current.nav.login.name && isLoggedIn) {
+        next({ name: lang.current.nav.bookRoute.name })
     } else {
         next()
     }

@@ -208,6 +208,7 @@
 
 <script>
 import lang from '@/utils/lang/langBroker.js'
+import { langEnglish, langFrench } from '@/utils/lang/langBroker.js'
 import { language, login } from '@/state'
 import { Language, LanguagesList } from '@/constants/Language'
 
@@ -215,16 +216,20 @@ export default {
     name: 'App',
     data() {
         return {
-            lang: lang,
             languageList: LanguagesList,
         }
     },
-    created() {
+    async created() {
         login.isLoggedIn = localStorage.getItem('isLoggedIn') === '1'
         login.loggedInUser = localStorage.getItem('loggedInUser')
-        language.current = localStorage.getItem('language') ?? Language.English
+        const currentLanguage =
+            localStorage.getItem('language') ?? Language.English
+        await this.handleChangeLanguage(currentLanguage)
     },
     computed: {
+        lang() {
+            return lang.current
+        },
         loggedIn() {
             return login.isLoggedIn
         },
@@ -243,8 +248,21 @@ export default {
             await this.$router.push({ name: lang.nav.login.name })
         },
         async handleChangeLanguage(selectedLanguage) {
-            localStorage.setItem('language', selectedLanguage)
-            language.current = selectedLanguage
+            if (
+                LanguagesList.includes(selectedLanguage) &&
+                selectedLanguage !== language.current
+            ) {
+                switch (selectedLanguage) {
+                    case Language.English:
+                        lang.current = langEnglish
+                        break
+                    case Language.French:
+                        lang.current = langFrench
+                        break
+                }
+                localStorage.setItem('language', selectedLanguage)
+                language.current = selectedLanguage
+            }
         },
     },
 }

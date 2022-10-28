@@ -37,37 +37,76 @@ export default {
             popularRoutesChartData: [],
             popularRoutesThisMonthChartData: [],
             averageBookingCostTableData: [],
-            lang: lang,
         }
     },
-    mounted() {
+    computed: {
+        lang() {
+            return lang.current
+        },
+    },
+    methods: {
+        async getPopularCities() {
+            return this.$http
+                .get(
+                    'https://fa-tl-dk1.azurewebsites.net/api/cities/mostPopular'
+                )
+                .then(async (body) => {
+                    this.popularCitiesChartData = body.data?.map((entry) => ({
+                        label: entry.name,
+                        value: entry.value,
+                    }))
+                    // await this.getMostExpensiveCities()
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
+        },
+        async getPopularRoutes() {
+            return this.$http
+                .get(
+                    'https://fa-tl-dk1.azurewebsites.net/api/route/mostPopular'
+                )
+                .then((body) => {
+                    this.popularRoutesChartData = body.data?.map((entry) => ({
+                        name: `${entry.city1} - ${entry.city2}`,
+                        thisMonth: entry.total,
+                        total: entry.thisMonth,
+                    }))
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
+        },
+        async getMostExpensiveCities() {
+            return this.$http
+                .get(
+                    'https://fa-tl-dk1.azurewebsites.net/api/cities/mostExpensive'
+                )
+                .then((body) => {
+                    this.averageBookingCostTableData = body.data
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
+        },
+    },
+    async mounted() {
         // mockup
-        this.popularCitiesChartData = [
-            { label: 'Darfur', value: 74 },
-            { label: 'Congo', value: 37 },
-            { label: 'Slavekysten', value: 15 },
-            { label: 'Luanda', value: 46 },
-            { label: 'Other', value: 27 },
-        ]
-        this.popularRoutesChartData = [
-            { name: 'Sahara - Darfur', thisMonth: 45, total: 127 },
-            { name: 'Congo - Luanda', thisMonth: 66, total: 100 },
-            { name: 'Wadai - Darfur', thisMonth: 15, total: 87 },
-            { name: 'Mocambique - Zanzibar', thisMonth: 2, total: 53 },
-            { name: 'Cairo - Suakin', thisMonth: 25, total: 25 },
-            { name: 'Cairo - Omdurman', thisMonth: 0, total: 17 },
-            { name: 'Luanda - Kabalo', thisMonth: 2, total: 9 },
-        ]
+        await this.getPopularCities()
+        await this.getMostExpensiveCities()
+        await this.getPopularRoutes()
+        // this.popularRoutesChartData = [
+        //     { name: 'Sahara - Darfur', thisMonth: 45, total: 127 },
+        //     { name: 'Congo - Luanda', thisMonth: 66, total: 100 },
+        //     { name: 'Wadai - Darfur', thisMonth: 15, total: 87 },
+        //     { name: 'Mocambique - Zanzibar', thisMonth: 2, total: 53 },
+        //     { name: 'Cairo - Suakin', thisMonth: 25, total: 25 },
+        //     { name: 'Cairo - Omdurman', thisMonth: 0, total: 17 },
+        //     { name: 'Luanda - Kabalo', thisMonth: 2, total: 9 },
+        // ]
         this.popularRoutesThisMonthChartData = this.popularRoutesChartData.map(
             (entry) => ({ thisMonth: entry.thisMonth })
         )
-        this.averageBookingCostTableData = [
-            { id: 1, name: 'Sahara', value: 365.24 },
-            { id: 2, name: 'Darfur', value: 227.8 },
-            { id: 3, name: 'Congo', value: 203.89 },
-            { id: 4, name: 'Tripoli', value: 179 },
-            { id: 5, name: 'Timbuktu', value: 136.27 },
-        ]
     },
 }
 </script>
