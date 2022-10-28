@@ -188,6 +188,7 @@ export default {
         SearchDropdown,
         IconBtn,
     },
+    emits: ['submit', 'expressDeliery'],
     data() {
         return {
             departingCity: '',
@@ -204,7 +205,35 @@ export default {
     },
     methods: {
         async handleSubmit() {
-            console.log('submit')
+            console.log('submit', {
+                departureCity: this.departingCity.name,
+                destinationCity: this.destinationCity.name,
+                recordedDelivery: this.recordedDelivery,
+                refridgeratedGoods: this.refridgeratedGoods,
+                liveAnimals: this.liveAnimals,
+                cautiousParcels: this.cautiousParcels,
+                expressDeliery: this.expressDeliery,
+            })
+            this.$http({
+                method: 'get',
+                url: 'https://fa-tl-dk1.azurewebsites.net/api/SearchRoute',
+                params: {
+                    departureCity: this.departingCity.name,
+                    destinationCity: this.destinationCity.name,
+                    recordedDelivery: this.recordedDelivery,
+                    refridgeratedGoods: this.refridgeratedGoods,
+                    liveAnimals: this.liveAnimals,
+                    cautiousParcels: this.cautiousParcels,
+                    expressDeliery: this.expressDeliery,
+                },
+            })
+                .then((body) => {
+                    this.$emit('submit', body.data)
+                    console.log('submit success', body)
+                })
+                .catch((e) => {
+                    console.log('submit error', e)
+                })
         },
         async getCities() {
             this.$http
@@ -219,6 +248,11 @@ export default {
     },
     async mounted() {
         await this.getCities()
+    },
+    watch: {
+        expressDeliery() {
+            this.$emit('expressDeliery', this.expressDeliery)
+        },
     },
 }
 </script>

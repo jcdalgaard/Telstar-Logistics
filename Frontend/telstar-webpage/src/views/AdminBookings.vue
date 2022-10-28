@@ -31,37 +31,16 @@ export default {
     data() {
         return {
             lang: lang.adminBookings,
-            routeList: [
-                {
-                    id: 1,
-                    departureCity: 'Addis Abeba',
-                    destinationCity: 'Tripoli',
-                    price: 500,
-                    stops: 2,
-                    bookedDate: 'Thu Oct 28 2022 17:45:42 GMT+0200',
-                },
-                {
-                    id: 2,
-                    departureCity: 'Addis Abeba',
-                    destinationCity: 'Zanzibar',
-                    price: 423,
-                    stops: 6,
-                    bookedDate: 'Thu Oct 28 2022 17:45:42 GMT+0200',
-                },
-                {
-                    id: 3,
-                    departureCity: 'Zanzibar',
-                    destinationCity: 'Addis Abeba',
-                    price: 123,
-                    stops: 4,
-                    bookedDate: 'Thu Oct 28 2022 17:45:42 GMT+0200',
-                },
-            ],
+            routeList: [],
         }
     },
     methods: {
         getBookingHistory() {
-            // TODO
+            this.$http
+                .get('https://fa-tl-dk1.azurewebsites.net/api/bookings/all')
+                .then((body) => {
+                    this.routeList = body.data
+                })
         },
     },
     mounted() {
