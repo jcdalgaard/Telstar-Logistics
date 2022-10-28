@@ -98,7 +98,7 @@ export default {
         return {
             edit: false,
             date: new Date(this.route.bookedDate),
-            lang: lang.bookingHistory.routeItem,
+            lang: lang.current.bookingHistory.routeItem,
         }
     },
     props: {

@@ -58,7 +58,7 @@ export default {
     components: { CardContainer },
     data() {
         return {
-            lang: lang.Login,
+            lang: lang.current.Login,
         }
     },
     methods: {

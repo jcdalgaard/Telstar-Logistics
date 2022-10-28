@@ -1,0 +1,118 @@
+{
+    "nav": {
+        "login": {
+            "name": "Se connecter",
+            "link": "/"
+        },
+        "bookRoute": {
+            "name": "Réservation",
+            "link": "/booking"
+        },
+        "bookingHistory": {
+            "name": "Historique des réservations",
+            "link": "/booking-history"
+        },
+        "bookingReport": {
+            "name": "Rapports",
+            "link": "/reporting"
+        },
+        "administrate": "Administrer",
+        "adminCities": {
+            "name": "Villes",
+            "link": "/administrate-cities"
+        },
+        "adminBookings": {
+            "name": "Réservation",
+            "link": "/administrate-bookings"
+        }
+    },
+    "BookRoute": {
+        "RouteSearch": {
+            "search": "Chercher",
+            "map": "Carte",
+            "From": "Du",
+            "To": "Au",
+            "recordedDelivery": "livraison enregistrée*",
+            "refridgeratedGoods": "Marchandises réfrigérées*",
+            "liveAnimals": "Les animaux vivants*",
+            "cautiousParcels": "Colis prudents*",
+            "expressDeliery": "Livraison express*",
+            "additionalCost": "* Des frais supplémentaires peuvent s'appliquer",
+            "maxWeight": "Poids maxi : 40kg",
+            "noWeapons": "Pas d'armes",
+            "loading": "Chargement...",
+            "noResults": "Aucun résultat..."
+        }
+    },
+    "BookingSummary": {
+        "header": "Résumé de la réservation",
+        "description": "Veuillez vérifier les détails de votre réservation avant de la placer.",
+        "departureLabel": "Ville de départ:",
+        "destinationLabel": "Ville de destination:",
+        "estimatedArrivalLabel": "Arrivée estimée:",
+        "priceLabel": "Prix:",
+        "stopsLabel": "Arrêts:",
+        "confirm": "Confirmer"
+    },
+    "BookingConfirmation": {
+        "header": "Réservation confirmée",
+        "description": "Merci d'utiliser Telstar Logistics.",
+        "return": "Revenir"
+    },
+    "ResultsList": {
+        "fastestLabel": "Le plus rapide",
+        "economicLabel": "Le plus économique",
+        "othersLabel": "Les autres",
+        "ResultsItem": {
+            "estimateLabel": "Prévu livré avant:",
+            "routeLabel": "Itinéraire:"
+        }
+    },
+    "bookingHistory": {
+        "header": "Histoire",
+        "routeItem": {
+            "departureLabel": "Ville de départ:",
+            "destinationLabel": "Ville de destination:",
+            "dateLabel": "Date:",
+            "priceLabel": "Prix:",
+            "delete": "Effacer",
+            "edit": "Éditer",
+            "save": "Enregistrer"
+        }
+    },
+    "adminBookings": {
+        "header": "Réservations passées",
+        "add": "Ajouter",
+        "routeItem": {
+            "departureLabel": "Ville de départ:",
+            "destinationLabel": "Ville de destination:",
+            "dateLabel": "Date:",
+            "priceLabel": "Prix:",
+            "delete": "Effacer",
+            "edit": "Éditer",
+            "save": "Enregistrer"
+        }
+    },
+    "adminCities": {
+        "header": "Villes",
+        "routes": "Itinéraires"
+    },
+    "reporting": {
+        "popularCities": "Villes populaires",
+        "popularRoutes": "Itinéraires populaires",
+        "averageCost": "Coût de réservation moyen"
+    },
+    "Login": {
+        "placeholder": {
+            "username": "Nom d'utilisateur",
+            "password": "Mot de passe"
+        },
+        "login": "Se connecter"
+    },
+    "navBar": {
+        "profile": {
+            "greeting": "Bonjour, ",
+            "logout": "Se déconnecter"
+        }
+    }
+}

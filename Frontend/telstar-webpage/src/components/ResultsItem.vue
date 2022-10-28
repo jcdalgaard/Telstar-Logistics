@@ -42,7 +42,7 @@ export default {
     emits: ['click'],
     data() {
         return {
-            lang: lang.ResultsList.ResultsItem,
+            lang: lang.current.ResultsList.ResultsItem,
         }
     },
     methods: {

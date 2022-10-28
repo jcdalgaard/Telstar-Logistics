@@ -21,7 +21,7 @@ namespace DbClient.Archives
 
         public IEnumerable<Booking> GetAllBookings()
         {
-            return _dataContext.Booking.Where(b=> b != null).AsEnumerable();
+            return _dataContext.Booking.Include(b => b.Packages).Include(b => b.Routes).ThenInclude(rf=>rf.Route).ThenInclude(e=>e.FirstCity).AsEnumerable();
         }
 
         public IEnumerable<Booking> GetAllBookingsByUser(int userId)

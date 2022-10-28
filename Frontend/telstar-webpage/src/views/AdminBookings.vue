@@ -1,11 +1,6 @@
 <template>
     <div class="view-container">
-        <div class="container bg-white p-3 rounded">
-            <div class="row">
-                <div class="col">
-                    <h1>{{ lang.header }}</h1>
-                </div>
-            </div>
+        <CardContainer :title="lang.header">
             <div class="row">
                 <div
                     v-for="(route, index) in routeList"
@@ -15,17 +10,19 @@
                     <RouteItem :route="route" :index="index" />
                 </div>
             </div>
-        </div>
+        </CardContainer>
     </div>
 </template>
 
 <script>
 import lang from '@/utils/lang/langBroker'
 import RouteItem from '@/components/RouteItem.vue'
+import CardContainer from '@/components/CardContainer'
 
 export default {
     name: 'AdminBookings',
     components: {
+        CardContainer,
         RouteItem,
     },
     data() {
@@ -33,6 +30,11 @@ export default {
             lang: lang.adminBookings,
             routeList: [],
         }
+    },
+    computed: {
+        lang() {
+            return lang.current.adminBookings
+        },
     },
     methods: {
         getBookingHistory() {

@@ -44,7 +44,7 @@ export default {
     },
     data() {
         return {
-            lang: lang.ResultsList,
+            lang: lang.current.ResultsList,
         }
     },
     props: {

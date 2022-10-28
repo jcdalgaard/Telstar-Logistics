@@ -11,7 +11,7 @@ namespace ApiCore.Dtos
     {
         public int Id { get; set; }
         public string DepartureCity { get; set; }
-        public string DestinationCty { get; set; }
+        public string DestinationCity { get; set; }
         public double Price { get; set; }
         public int Stops { get; set; }
         public DateTime EstimatedArrival { get; set; }
