@@ -11,9 +11,9 @@
             aria-expanded="false"
             :title="header"
         >
-            <h5 class="col mb-0 mx-2">
+            <div class="col py-2 px-3">
                 {{ header }}
-            </h5>
+            </div>
             <div class="col-auto">
                 <font-awesome-icon
                     icon="fa-solid fa-chevron-down"

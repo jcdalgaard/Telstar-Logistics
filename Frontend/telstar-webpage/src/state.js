@@ -2,5 +2,9 @@ import Vue from 'vue'
 
 export const login = Vue.observable({
     isLoggedIn: false,
-    loggedInUser: undefined,
+    loggedInUser: '',
+})
+
+export const language = Vue.observable({
+    current: 'English',
 })

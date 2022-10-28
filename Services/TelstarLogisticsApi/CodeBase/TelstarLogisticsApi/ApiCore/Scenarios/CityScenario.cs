@@ -10,6 +10,7 @@ using DbClient.Archives.Interfaces;
 using DbClient.Entitites;
 using Microsoft.EntityFrameworkCore.Query;
 
+
 namespace ApiCore.Scenarios
 {
     public class CityScenario : ICityScenario

@@ -29,8 +29,19 @@ namespace TelstarLogisticsApi.Functions.Internal
         {
             try
             {
+                string departureCityString = req.Query["departureCity"];
+                string destinationCityString = req.Query["destinationCity"];
+                if (string.IsNullOrEmpty(departureCityString))
+                {
+                    throw new ArgumentException("The departure city parameter is null or empty");
+                }
+
+                if (string.IsNullOrEmpty(destinationCityString))
+                {
+                    throw new ArgumentException("The destination city parameter is null or empty");
+                }
                 log.LogInformation("C# HTTP trigger function processed a request.");
-                var result = _routeScenario.GetRoutes();
+                var result = _routeScenario.GetRoutes(departureCityString, destinationCityString);
 
                 string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
 

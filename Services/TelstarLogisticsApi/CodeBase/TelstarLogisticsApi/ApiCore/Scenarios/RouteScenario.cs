@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
@@ -8,52 +8,24 @@ using ApiCore.Dtos;
 using ApiCore.Scenarios.Interfaces;
 using DbClient.Archives.Interfaces;
 using DbClient.Entitites;
+using DbClient;
 
 namespace ApiCore.Scenarios
 {
     public class RouteScenario: IRouteScenario
     {
+        private readonly ICalculateRouteArchive _calculateRouteArchive;
         private readonly IBookingScenario _bookingScenario;
         private readonly ICityArchive _cityArchive;
 
-        public RouteScenario(IBookingScenario bookingScenario, ICityArchive cityArchive)
+        public RouteScenario(ICalculateRouteArchive calculateRouteArchive, IBookingScenario bookingScenario, ICityArchive cityArchive)
         {
+            _calculateRouteArchive = calculateRouteArchive;
             _bookingScenario = bookingScenario;
             _cityArchive = cityArchive;
         }
 
-        public BestRoutesDto GetRoutes()
-        {
-            return new BestRoutesDto()
-            {
-                Cheapest = new List<RouteDto>()
-                {
-                    new RouteDto()
-                    {
-                        DepartureCity = "Sahara",
-                        DestinationCty = "Sahara2",
-                        EstimatedArrival = new DateTime(2022,10,28),
-                        Id = 123,
-                        Price = 123.1,
-                        Stops = 4
-                    }
-                },
-                Fastest = new List<RouteDto>()
-                {
-                    new RouteDto()
-                    {
-                        DepartureCity = "Sahara3",
-                        DestinationCty = "Sahara4",
-                        EstimatedArrival = new DateTime(2022,10,20),
-                        Id = 23,
-                        Price = 13.1,
-                        Stops = 1
-                    }
-                }
-            };
-        }
-
-        public List<TopRouteDto> GetMostPopularRoutes()
+                public List<TopRouteDto> GetMostPopularRoutes()
         {
             var allBookings = _bookingScenario.GetAllBookings();
             var allRoutes = allBookings
@@ -75,6 +47,76 @@ namespace ApiCore.Scenarios
             }
 
             return result;
+        }
+
+        public BestRoutesDto GetRoutes(string from, string to)
+        {
+            List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
+            int start = _calculateRouteArchive.GetCityID(from);
+            int end = _calculateRouteArchive.GetCityID(to);
+            CalculateRoute cr = new CalculateRoute();
+            Route cheapestRoute = cr.calculateCheapestRoute(AllRoutes, start, end);
+            Route fastestRoute = cr.calculateFastestRoute(AllRoutes, start, end);
+
+            if (cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments > 100000)
+            {
+                return new BestRoutesDto()
+                {
+                    Cheapest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = -1, // maybe remove
+                        Price = 0,
+                        Stops = -1
+                    }
+                },
+
+                    Fastest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = -1, // maybe remove
+                        Price = 0,
+                        Stops = -1
+                    }
+                }
+                };
+            } 
+            return new BestRoutesDto()
+            {
+                Cheapest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = 23, // maybe remove
+                        Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
+                        Stops = cheapestRoute.NumberOfSegments
+                    }
+                },
+
+                Fastest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = 23, // maybe remove
+                        Price = fastestRoute.SegmentPrice.Value * fastestRoute.NumberOfSegments,
+                        Stops = fastestRoute.NumberOfSegments
+                    }
+                }
+            };
         }
     }
 }
