@@ -1,12 +1,19 @@
 <template>
     <div v-if="selectedRoute === null" class="view-container">
         <RouteSearch
-            @submit="resultsList = $event"
+            @submit="
+                ;(cheapestList = $event.cheapest),
+                    (fastestList = $event.fastest)
+            "
             @expressDeliery="expressDeliery = $event"
+            @loading="loading = $event"
         />
         <ResultsList
-            v-if="resultsList.length > 0"
-            :results-list="resultsList"
+            v-if="
+                (fastestList.length > 0 || cheapestList.length > 0) && !loading
+            "
+            :fastest-list="fastestList"
+            :cheapest-list="cheapestList"
             :express-deliery="expressDeliery"
             @selectRoute="handleSelectedRoute($event)"
         />
@@ -45,32 +52,9 @@ export default {
             selectedRoute: null,
             bookingConfirmed: false,
             expressDeliery: false,
-            resultsList: [
-                {
-                    id: 1,
-                    departureCity: 'Addis Abeba',
-                    destinationCity: 'Tripoli',
-                    price: 500,
-                    stops: 2,
-                    estimatedArrival: 'Thu Oct 28 2022 17:45:42 GMT+0200',
-                },
-                {
-                    id: 2,
-                    departureCity: 'Addis Abeba',
-                    destinationCity: 'Zanzibar',
-                    price: 423,
-                    stops: 6,
-                    estimatedArrival: 'Thu Oct 30 2022 15:34:42 GMT+0200',
-                },
-                {
-                    id: 3,
-                    departureCity: 'Zanzibar',
-                    destinationCity: 'Addis Abeba',
-                    price: 123,
-                    stops: 4,
-                    estimatedArrival: 'Thu Oct 29 2022 18:05:42 GMT+0200',
-                },
-            ],
+            fastestList: [],
+            loading: false,
+            cheapestList: [],
         }
     },
     methods: {
@@ -80,7 +64,7 @@ export default {
         async saveBooking() {
             this.$http({
                 method: 'post',
-                url: '',
+                url: 'https://fa-tl-dk1.azurewebsites.net/api/bookings/add',
                 data: {
                     arrivalDate: null,
                     bookedDate: new Date(),

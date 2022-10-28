@@ -53,6 +53,9 @@ export default {
             } else console.log(`${date} is not a vaild date string`)
         },
     },
+    mounted() {
+        console.log(this.route)
+    },
 }
 </script>
 

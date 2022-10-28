@@ -56,8 +56,10 @@ export default {
         CityItem,
         RouteItem,
     },
-    lang() {
-        return lang.current.adminCities
+    computed: {
+        lang() {
+            return lang.current.adminCities
+        },
     },
     data() {
         return {
