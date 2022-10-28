@@ -69,3 +69,7 @@ a.light:hover {
 .h-fit-content{
     height: fit-content;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

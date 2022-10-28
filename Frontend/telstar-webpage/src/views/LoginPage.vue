@@ -26,7 +26,7 @@
                                 <div class="input-group input-group-lg">
                                     <input
                                         :placeholder="lang.placeholder.password"
-                                        type="text"
+                                        type="password"
                                         class="form-control"
                                         required="required"
                                     />
@@ -64,7 +64,9 @@ export default {
     methods: {
         async handleLogin() {
             localStorage.setItem('isLoggedIn', '1')
+            localStorage.setItem('loggedInUser', 'Jim')
             login.isLoggedIn = true
+            login.loggedInUser = 'Jim'
             await this.$router.push('booking')
         },
     },
