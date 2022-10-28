@@ -30,10 +30,10 @@ import lang from '@/utils/lang/langBroker'
 export default {
     name: 'BookingConfirmation',
     emits: ['return', 'complete'],
-    data() {
-        return {
-            lang: lang.current.BookingConfirmation,
-        }
+    computed: {
+        lang() {
+            return lang.current.BookingConfirmation
+        },
     },
 }
 </script>

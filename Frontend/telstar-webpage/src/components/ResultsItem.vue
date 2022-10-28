@@ -40,10 +40,10 @@ export default {
         route: { type: Object, requred: true },
     },
     emits: ['click'],
-    data() {
-        return {
-            lang: lang.current.ResultsList.ResultsItem,
-        }
+    computed: {
+        lang() {
+            return lang.current.ResultsList.ResultsItem
+        },
     },
     methods: {
         formatDate(date) {
