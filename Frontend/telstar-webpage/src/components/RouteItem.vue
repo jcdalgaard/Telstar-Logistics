@@ -89,11 +89,15 @@ export default {
     components: {
         CollapseSection,
     },
+    computed: {
+        lang() {
+            return lang.current.bookingHistory.routeItem
+        },
+    },
     data() {
         return {
             edit: false,
             date: new Date(this.route.bookedDate),
-            lang: lang.current.bookingHistory.routeItem,
         }
     },
     props: {

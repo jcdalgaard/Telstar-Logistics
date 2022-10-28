@@ -42,10 +42,10 @@ export default {
     components: {
         ResultsItem,
     },
-    data() {
-        return {
-            lang: lang.current.ResultsList,
-        }
+    computed: {
+        lang() {
+            return lang.current.ResultsList
+        },
     },
     props: {
         resultsList: { type: Array, required: true },

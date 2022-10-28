@@ -7,7 +7,7 @@
                         <div class="row p-2">
                             <div class="col-12 mb-2">
                                 <SearchDropdown
-                                    placeholder="From"
+                                    :placeholder="lang.From"
                                     :loading="loading"
                                     :options="optionsList"
                                     :loadingText="lang.loading"
@@ -17,7 +17,7 @@
                             </div>
                             <div class="col-12">
                                 <SearchDropdown
-                                    placeholder="To"
+                                    :placeholder="lang.To"
                                     :loading="loading"
                                     :options="optionsList"
                                     :loadingText="lang.loading"
@@ -191,8 +191,12 @@ export default {
             expressDeliery: false,
             optionsList: null,
             loading: false,
-            lang: lang.current.BookRoute.RouteSearch,
         }
+    },
+    computed: {
+        lang() {
+            return lang.current.BookRoute.RouteSearch
+        },
     },
     methods: {
         async handleSubmit() {

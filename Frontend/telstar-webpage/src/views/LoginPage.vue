@@ -56,10 +56,10 @@ import { login } from '@/state'
 export default {
     name: 'LoginPage',
     components: { CardContainer },
-    data() {
-        return {
-            lang: lang.current.Login,
-        }
+    computed: {
+        lang() {
+            return lang.current.login
+        },
     },
     methods: {
         async handleLogin() {

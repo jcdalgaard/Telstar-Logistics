@@ -64,10 +64,10 @@ export default {
         route: { type: Object, required: true },
     },
     emits: ['return', 'confirmed'],
-    data() {
-        return {
-            lang: lang.current.BookingSummary,
-        }
+    computed: {
+        lang() {
+            return lang.current.BookingSummary
+        },
     },
     methods: {
         formatDate(date) {

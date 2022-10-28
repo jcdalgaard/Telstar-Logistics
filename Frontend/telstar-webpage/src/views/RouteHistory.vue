@@ -25,9 +25,13 @@ export default {
         CardContainer,
         RouteItem,
     },
+    computed: {
+        lang() {
+            return lang.current.bookingHistory
+        },
+    },
     data() {
         return {
-            lang: lang.current.bookingHistory,
             routeList: [
                 {
                     id: 1,
