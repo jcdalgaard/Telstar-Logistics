@@ -91,8 +91,10 @@
         },
         "login": "Login"
     },
-    "navBarProfile": {
-        "greeting": "Hello, ",
-        "logout": "Logout"
+    "navBar" : {
+        "profile": {
+            "greeting": "Hello, ",
+            "logout": "Logout"
+        }
     }
 }
