@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApiCore.Dtos;
 using ApiCore.Scenarios.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace TelstarLogisticsApi.Functions.Internal
 {
@@ -29,20 +32,25 @@ namespace TelstarLogisticsApi.Functions.Internal
         {
             try
             {
-                string departureCityString = req.Query["departureCity"];
-                string destinationCityString = req.Query["destinationCity"];
-                if (string.IsNullOrEmpty(departureCityString))
+                var content = await new StreamReader(req.Body).ReadToEndAsync();
+                SearchDto searchDto = JsonConvert.DeserializeObject<SearchDto>(content);
+                if (searchDto is null)
+                {
+                    throw new ArgumentException("There are no parameters.");
+                }
+                if (string.IsNullOrEmpty(searchDto.DepartureCity))
                 {
                     throw new ArgumentException("The departure city parameter is null or empty");
                 }
 
-                if (string.IsNullOrEmpty(destinationCityString))
+                if (string.IsNullOrEmpty(searchDto.DestinationCity))
                 {
                     throw new ArgumentException("The destination city parameter is null or empty");
                 }
                 log.LogInformation("C# HTTP trigger function processed a request.");
-                var result = _routeScenario.GetRoutes(departureCityString, destinationCityString);
+                var result = _routeScenario.GetRoutes(searchDto);
 
+                _routeScenario.ApplyFees(result, searchDto);
                 string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
 
                 return new OkObjectResult(result);
