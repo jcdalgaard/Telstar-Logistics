@@ -13,7 +13,7 @@ using DbClient;
 
 namespace ApiCore.Scenarios
 {
-    public class RouteScenario: IRouteScenario
+    public class RouteScenario : IRouteScenario
     {
         private readonly ICalculateRouteArchive _calculateRouteArchive;
         private readonly IBookingScenario _bookingScenario;
@@ -26,18 +26,18 @@ namespace ApiCore.Scenarios
             _cityArchive = cityArchive;
         }
 
-                public List<TopRouteDto> GetMostPopularRoutes()
+        public List<TopRouteDto> GetMostPopularRoutes()
         {
             var allBookings = _bookingScenario.GetAllBookings();
             var allRoutes = allBookings
                 .SelectMany(b => b.Routes
                     .Select(rf => rf.Route));
             var groups = allRoutes.GroupBy(x => new
-                {
-                    x.FirstCityID,
-                    x.SecondCityID,
-                    x.Duration
-                });
+            {
+                x.FirstCityID,
+                x.SecondCityID,
+                x.Duration
+            });
             var result = groups.OrderByDescending(g => g.Count()).Take(5).Select(r =>
             {
                 City first = _cityArchive.GetById(r.Key.FirstCityID);
@@ -48,7 +48,6 @@ namespace ApiCore.Scenarios
                     City2 = second.Name,
                     Total = r.Count(),
                     ThisMonth = r.Sum(g => g.Duration)
-
                 };
             }).ToList();
 
@@ -58,11 +57,13 @@ namespace ApiCore.Scenarios
         public BestRoutesDto GetRoutes(SearchDto searchDto)
         {
             List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
+            List<Route> AllRoutesWithPrices = _calculateRouteArchive.SetRoutesPrices(AllRoutes);
             int start = _calculateRouteArchive.GetCityID(searchDto.DepartureCity);
             int end = _calculateRouteArchive.GetCityID(searchDto.DestinationCity);
+            int numberOfCities = _calculateRouteArchive.GetNumberOfCities();
             CalculateRoute cr = new CalculateRoute();
-            Route cheapestRoute = cr.calculateCheapestRoute(AllRoutes, start, end);
-            Route fastestRoute = cr.calculateFastestRoute(AllRoutes, start, end);
+            Route cheapestRoute = cr.calculateCheapestRoute(AllRoutesWithPrices, start, end, numberOfCities);
+            Route fastestRoute = cr.calculateFastestRoute(AllRoutesWithPrices, start, end, numberOfCities);
 
             if (cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments > 100000)
             {
@@ -73,7 +74,7 @@ namespace ApiCore.Scenarios
                     new RouteDto()
                     {
                         DepartureCity = searchDto.DepartureCity,
-                        DestinationCty = searchDto.DestinationCity,
+                        DestinationCity = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = -1, // maybe remove
                         Price = 0,
@@ -86,7 +87,7 @@ namespace ApiCore.Scenarios
                     new RouteDto()
                     {
                         DepartureCity = searchDto.DepartureCity,
-                        DestinationCty = searchDto.DestinationCity,
+                        DestinationCity = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = -1, // maybe remove
                         Price = 0,
@@ -94,7 +95,7 @@ namespace ApiCore.Scenarios
                     }
                 }
                 };
-            } 
+            }
             return new BestRoutesDto()
             {
                 Cheapest = new List<RouteDto>()
@@ -102,7 +103,7 @@ namespace ApiCore.Scenarios
                     new RouteDto()
                     {
                         DepartureCity = searchDto.DepartureCity,
-                        DestinationCty = searchDto.DestinationCity,
+                        DestinationCity = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = 23, // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
@@ -115,7 +116,7 @@ namespace ApiCore.Scenarios
                     new RouteDto()
                     {
                         DepartureCity = searchDto.DepartureCity,
-                        DestinationCty = searchDto.DestinationCity,
+                        DestinationCity = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = 23, // maybe remove
                         Price = fastestRoute.SegmentPrice.Value * fastestRoute.NumberOfSegments,
