@@ -14,12 +14,13 @@ public class CalculateRoute
     // not yet included in shortest
     // path tree
     //static int V = 9;
-    int minDistance(int[] dist,
+    int minDistance(double[] dist,
                     bool[] sptSet,
                     int V)
     {
         // Initialize min value
-        int min = int.MaxValue, min_index = -1;
+        double min = (double)int.MaxValue;
+        int min_index = -1;
 
         for (int v = 0; v < V; v++)
             if (sptSet[v] == false && dist[v] <= min)
@@ -33,7 +34,7 @@ public class CalculateRoute
 
     // A utility function to print
     // the constructed distance array
-    void printSolution(int[] dist, int n)
+    void printSolution(double[] dist, int n)
     {
         Console.Write("Vertex     Distance "
                       + "from Source\n");
@@ -45,11 +46,11 @@ public class CalculateRoute
     // single source shortest path algorithm
     // for a graph represented using adjacency
     // matrix representation
-    int dijkstra(int[,] graph, int src, int target, int V)
+    double dijkstra(double[,] graph, int src, int target, int V)
     {
         src -= 1;
         target -= 1;
-        int[] dist = new int[V]; // The output array. dist[i]
+        double[] dist = new double[V]; // The output array. dist[i]
                                  // will hold the shortest
                                  // distance from src to i
 
@@ -106,21 +107,11 @@ public class CalculateRoute
 
     public Route calculateCheapestRoute(List<Route> AllRoutes, int src, int target) // Get number of cities
     {
-        /* int[,] graph = new int[,] { { 0, 4, 0, 0, 0, 0, 0, 8, 0 },
-                                      { 4, 0, 8, 0, 0, 0, 0, 11, 0 },
-                                      { 0, 8, 0, 7, 0, 4, 0, 0, 2 },
-                                      { 0, 0, 7, 0, 9, 14, 0, 0, 0 },
-                                      { 0, 0, 0, 9, 0, 10, 0, 0, 0 },
-                                      { 0, 0, 4, 14, 10, 0, 2, 0, 0 },
-                                      { 0, 0, 0, 0, 0, 2, 0, 1, 6 },
-                                      { 8, 11, 0, 0, 0, 0, 1, 0, 7 },
-                                      { 0, 0, 2, 0, 0, 0, 6, 7, 0 } };
-        */
         // Initialize graph/distance to 0, and then build from DB
         System.Console.WriteLine("Entered calculateCheapestRoute");
         System.Console.WriteLine(AllRoutes.Count());
         int NumCities = 32;
-        int[,] graph = new int[NumCities, NumCities];
+        double[,] graph = new double[NumCities, NumCities];
         for (int i=0; i < NumCities; i++)
         {
             for (int j=0; j < NumCities; j++)
@@ -133,29 +124,72 @@ public class CalculateRoute
             //System.Console.WriteLine(route.ID);
             System.Console.WriteLine(route.FirstCityID - 1);
             System.Console.WriteLine(route.SecondCityID - 1);
-            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.NumberOfSegments;
-            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.NumberOfSegments;
+            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.NumberOfSegments * 4; // should be from price DB
+            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.NumberOfSegments * 4;
         }
 
 
 
         CalculateRoute t = new CalculateRoute();
-        int Steps = t.dijkstra(graph, src, target, NumCities);
+        double Price = t.dijkstra(graph, src, target, NumCities);
         System.Console.WriteLine("TEST RAN AND RETURNED");
         System.Console.WriteLine("CityFrom: " + src);
         System.Console.WriteLine("CityTo: " + target);
-        System.Console.WriteLine("NumberOfSteps!!!!!!: " + Steps);
+        System.Console.WriteLine("Price!!!!!!: " + Price);
         Route cheapestRoute = new Route()
         {
             FirstCityID = src,
-            FirstCity = new City() { ID = src},
+            FirstCity = new City() { ID = src },
             SecondCityID = target,
             SecondCity = new City() { ID = target },
-            NumberOfSegments = Steps,
+            NumberOfSegments = (int) (Price / 4), // segment price (4) should be from DB
             SegmentPrice = new SegmentPrice() { Value = 1},
         };
    
         return cheapestRoute;
     }
 
+    public Route calculateFastestRoute(List<Route> AllRoutes, int src, int target) // Get number of cities
+    {
+        // Initialize graph/distance to 0, and then build from DB
+        System.Console.WriteLine("Entered calculateCheapestRoute");
+        System.Console.WriteLine(AllRoutes.Count());
+        int NumCities = 32;
+        double[,] graph = new double[NumCities, NumCities];
+        for (int i = 0; i < NumCities; i++)
+        {
+            for (int j = 0; j < NumCities; j++)
+            {
+                graph[i, j] = 0;
+            }
+        }
+        foreach (Route route in AllRoutes)
+        {
+            //System.Console.WriteLine(route.ID);
+            System.Console.WriteLine(route.FirstCityID - 1);
+            System.Console.WriteLine(route.SecondCityID - 1);
+            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.Duration;
+            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.Duration;
+        }
+
+
+
+        CalculateRoute t = new CalculateRoute();
+        double Duration = t.dijkstra(graph, src, target, NumCities);
+        System.Console.WriteLine("TEST RAN AND RETURNED");
+        System.Console.WriteLine("CityFrom: " + src);
+        System.Console.WriteLine("CityTo: " + target);
+        System.Console.WriteLine("Duration!!!!!!: " + Duration);
+        Route fastestRoute = new Route()
+        {
+            FirstCityID = src,
+            FirstCity = new City() { ID = src },
+            SecondCityID = target,
+            SecondCity = new City() { ID = target },
+            NumberOfSegments = (int)(Duration / 4),
+            SegmentPrice = new SegmentPrice() { Value = 1 },
+        };
+
+        return fastestRoute;
+    }
 }

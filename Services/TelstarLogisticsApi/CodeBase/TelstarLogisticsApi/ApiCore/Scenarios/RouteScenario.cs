@@ -23,41 +23,44 @@ namespace ApiCore.Scenarios
 
         public BestRoutesDto GetRoutes(string from, string to)
         {
-            /*return new BestRoutesDto()
-            {
-                Cheapest = new List<RouteDto>()
-                {
-                    new RouteDto()
-                    {
-                        DepartureCity = "Sahara",
-                        DestinationCty = "Sahara2",
-                        EstimatedArrival = new DateOnly(2022,10,28),
-                        Id = "213",
-                        Price = 123.1,
-                        Stops = 4
-                    }
-                },
-                Fastest = new List<RouteDto>()
-                {
-                    new RouteDto()
-                    {
-                        DepartureCity = "Sahara3",
-                        DestinationCty = "Sahara4",
-                        EstimatedArrival = new DateOnly(2022,10,20),
-                        Id = "23",
-                        Price = 13.1,
-                        Stops = 1
-                    }
-                }
-            */
             List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
             int start = _calculateRouteArchive.GetCityID(from);
             int end = _calculateRouteArchive.GetCityID(to);
             CalculateRoute cr = new CalculateRoute();
-            //int start = 22;
-            //int end = 5;
             Route cheapestRoute = cr.calculateCheapestRoute(AllRoutes, start, end);
-            //Route fastestRoute =
+            Route fastestRoute = cr.calculateFastestRoute(AllRoutes, start, end);
+
+            if (cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments > 100000)
+            {
+                return new BestRoutesDto()
+                {
+                    Cheapest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = "-1", // maybe remove
+                        Price = 0,
+                        Stops = -1
+                    }
+                },
+
+                    Fastest = new List<RouteDto>()
+                {
+                    new RouteDto()
+                    {
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = "-1", // maybe remove
+                        Price = 0,
+                        Stops = -1
+                    }
+                }
+                };
+            } 
             return new BestRoutesDto()
             {
                 Cheapest = new List<RouteDto>()
@@ -66,7 +69,7 @@ namespace ApiCore.Scenarios
                     {
                         DepartureCity = from,
                         DestinationCty = to,
-                        EstimatedArrival = new DateTime(2022,10,20),
+                        EstimatedArrival = new DateTime(2022,10,28),
                         Id = "23", // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
                         Stops = cheapestRoute.NumberOfSegments
@@ -77,12 +80,12 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = "Sahara3",
-                        DestinationCty = "Sahara4",
-                        EstimatedArrival = new DateTime(2022,10,20),
-                        Id = "23",
-                        Price = 13.1,
-                        Stops = 1
+                        DepartureCity = from,
+                        DestinationCty = to,
+                        EstimatedArrival = new DateTime(2022,10,28),
+                        Id = "23", // maybe remove
+                        Price = fastestRoute.SegmentPrice.Value * fastestRoute.NumberOfSegments,
+                        Stops = fastestRoute.NumberOfSegments
                     }
                 }
             };
