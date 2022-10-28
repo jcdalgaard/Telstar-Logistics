@@ -39,7 +39,7 @@ namespace ApiCore.Scenarios
                 var city1 = _cityArchive.GetById(route.FirstCityID);
                 var city2 = _cityArchive.GetById(route.SecondCityID);
 
-                var routePrice = _segmentPriceArchive.GetById(route.SegmentPriceID).GetValue() * route.NumberOfSegments;
+                var routePrice = _segmentPriceArchive.GetById(route.SegmentPriceID).Value * route.NumberOfSegments;
                 var adjacent = new CityDto
                 {
                     Price = routePrice,

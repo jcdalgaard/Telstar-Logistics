@@ -9,11 +9,6 @@ namespace DbClient.Entitites
 {
     public class SegmentPrice : BaseModel
     {
-        private double value { get; set; }
-
-        public double GetValue()
-        {
-            return value;
-        }
+        public double Value { get; set; }
     }
 }
