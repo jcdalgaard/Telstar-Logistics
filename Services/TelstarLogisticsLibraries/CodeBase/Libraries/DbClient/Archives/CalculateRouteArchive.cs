@@ -9,7 +9,7 @@ using TelstarLogistics.DbClient.Setup;
 
 namespace DbClient.Archives
 {
-    public class CalculateRouteArchive: ICalculateRouteArchive
+    public class CalculateRouteArchive : ICalculateRouteArchive
     {
         private readonly DataContext _dataContext;
 
@@ -26,6 +26,16 @@ namespace DbClient.Archives
         public int GetCityID(string city)
         {
             return _dataContext.City.Where(x => x.Name == city).Select(x => x.ID).Single();
+        }
+
+        public List<Route> SetRoutesPrices(List<Route> AllRoutes)
+        {
+            foreach (var route in AllRoutes)
+            {
+                route.SegmentPrice.Value = _dataContext.SegmentPrice.Where(x => x.ID == route.SegmentPriceID).Select(x => x.Value).Single();
+            }
+
+            return AllRoutes;
         }
     }
 }

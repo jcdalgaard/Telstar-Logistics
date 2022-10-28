@@ -12,7 +12,7 @@ using DbClient;
 
 namespace ApiCore.Scenarios
 {
-    public class RouteScenario: IRouteScenario
+    public class RouteScenario : IRouteScenario
     {
         private readonly ICalculateRouteArchive _calculateRouteArchive;
 
@@ -24,11 +24,12 @@ namespace ApiCore.Scenarios
         public BestRoutesDto GetRoutes(string from, string to)
         {
             List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
+            List<Route> AllRoutesWithPrices = _calculateRouteArchive.SetRoutesPrices(AllRoutes);
             int start = _calculateRouteArchive.GetCityID(from);
             int end = _calculateRouteArchive.GetCityID(to);
             CalculateRoute cr = new CalculateRoute();
-            Route cheapestRoute = cr.calculateCheapestRoute(AllRoutes, start, end);
-            Route fastestRoute = cr.calculateFastestRoute(AllRoutes, start, end);
+            Route cheapestRoute = cr.calculateCheapestRoute(AllRoutesWithPrices, start, end);
+            Route fastestRoute = cr.calculateFastestRoute(AllRoutesWithPrices, start, end);
 
             if (cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments > 100000)
             {
@@ -60,7 +61,7 @@ namespace ApiCore.Scenarios
                     }
                 }
                 };
-            } 
+            }
             return new BestRoutesDto()
             {
                 Cheapest = new List<RouteDto>()

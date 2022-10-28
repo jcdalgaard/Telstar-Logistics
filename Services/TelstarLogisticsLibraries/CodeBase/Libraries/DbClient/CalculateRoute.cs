@@ -9,12 +9,12 @@ using TelstarLogistics.DbClient.Setup;
 public class CalculateRoute
 {
     // A utility function to find the
-    // vertex with minimum distance 
+    // vertex with minimum distance
     // value, from the set of vertices
     // not yet included in shortest
     // path tree
     //static int V = 9;
-    int minDistance(double[] dist,
+    private int minDistance(double[] dist,
                     bool[] sptSet,
                     int V)
     {
@@ -34,7 +34,7 @@ public class CalculateRoute
 
     // A utility function to print
     // the constructed distance array
-    void printSolution(double[] dist, int n)
+    private void printSolution(double[] dist, int n)
     {
         Console.Write("Vertex     Distance "
                       + "from Source\n");
@@ -46,13 +46,13 @@ public class CalculateRoute
     // single source shortest path algorithm
     // for a graph represented using adjacency
     // matrix representation
-    double dijkstra(double[,] graph, int src, int target, int V)
+    private double dijkstra(Route[,] graph, int src, int target, int V, bool cheapest)
     {
         src -= 1;
         target -= 1;
         double[] dist = new double[V]; // The output array. dist[i]
-                                 // will hold the shortest
-                                 // distance from src to i
+                                       // will hold the shortest
+                                       // distance from src to i
 
         // sptSet[i] will true if vertex
         // i is included in shortest path
@@ -93,9 +93,18 @@ public class CalculateRoute
                 // to v, and total weight of path
                 // from src to v through u is smaller
                 // than current value of dist[v]
-                if (!sptSet[v] && graph[u, v] != 0 &&
-                     dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
-                    dist[v] = dist[u] + graph[u, v];
+                if (cheapest)
+                {
+                    if (!sptSet[v] && graph[u, v].NumberOfSegments != 0 &&
+                     dist[u] != int.MaxValue && dist[u] + graph[u, v].NumberOfSegments * graph[u, v].SegmentPrice.Value < dist[v])
+                        dist[v] = dist[u] + graph[u, v].NumberOfSegments * graph[u, v].SegmentPrice.Value;
+                }
+                else
+                {
+                    if (!sptSet[v] && graph[u, v].NumberOfSegments != 0 &&
+                     dist[u] != int.MaxValue && dist[u] + graph[u, v].Duration < dist[v])
+                        dist[v] = dist[u] + graph[u, v].Duration;
+                }
         }
 
         // print the constructed distance array
@@ -111,12 +120,17 @@ public class CalculateRoute
         System.Console.WriteLine("Entered calculateCheapestRoute");
         System.Console.WriteLine(AllRoutes.Count());
         int NumCities = 32;
-        double[,] graph = new double[NumCities, NumCities];
-        for (int i=0; i < NumCities; i++)
+        Route[,] graph = new Route[NumCities, NumCities];
+        for (int i = 0; i < NumCities; i++)
         {
-            for (int j=0; j < NumCities; j++)
+            for (int j = 0; j < NumCities; j++)
             {
-                graph[i, j] = 0;
+                graph[i, j] = new Route()
+                {
+                    SegmentPrice = new SegmentPrice() { Value = 0 },
+                    NumberOfSegments = 0,
+                    Duration = 0
+                };
             }
         }
         foreach (Route route in AllRoutes)
@@ -124,14 +138,13 @@ public class CalculateRoute
             //System.Console.WriteLine(route.ID);
             System.Console.WriteLine(route.FirstCityID - 1);
             System.Console.WriteLine(route.SecondCityID - 1);
-            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.NumberOfSegments * 4; // should be from price DB
-            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.NumberOfSegments * 4;
+            System.Console.WriteLine(route.SegmentPrice.Value + " it is price");
+            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route; // should be from price DB
+            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route;
         }
 
-
-
         CalculateRoute t = new CalculateRoute();
-        double Price = t.dijkstra(graph, src, target, NumCities);
+        double Price = t.dijkstra(graph, src, target, NumCities, true);
         System.Console.WriteLine("TEST RAN AND RETURNED");
         System.Console.WriteLine("CityFrom: " + src);
         System.Console.WriteLine("CityTo: " + target);
@@ -142,10 +155,10 @@ public class CalculateRoute
             FirstCity = new City() { ID = src },
             SecondCityID = target,
             SecondCity = new City() { ID = target },
-            NumberOfSegments = (int) (Price / 4), // segment price (4) should be from DB
-            SegmentPrice = new SegmentPrice() { Value = 1},
+            NumberOfSegments = (int)(Price / 4), // segment price (4) should be from DB
+            SegmentPrice = new SegmentPrice() { Value = 1 },
         };
-   
+
         return cheapestRoute;
     }
 
@@ -155,12 +168,17 @@ public class CalculateRoute
         System.Console.WriteLine("Entered calculateCheapestRoute");
         System.Console.WriteLine(AllRoutes.Count());
         int NumCities = 32;
-        double[,] graph = new double[NumCities, NumCities];
+        Route[,] graph = new Route[NumCities, NumCities];
         for (int i = 0; i < NumCities; i++)
         {
             for (int j = 0; j < NumCities; j++)
             {
-                graph[i, j] = 0;
+                graph[i, j] = new Route()
+                {
+                    SegmentPrice = new SegmentPrice() { Value = 0 },
+                    NumberOfSegments = 0,
+                    Duration = 0
+                };
             }
         }
         foreach (Route route in AllRoutes)
@@ -168,14 +186,12 @@ public class CalculateRoute
             //System.Console.WriteLine(route.ID);
             System.Console.WriteLine(route.FirstCityID - 1);
             System.Console.WriteLine(route.SecondCityID - 1);
-            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route.Duration;
-            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route.Duration;
+            graph[route.FirstCityID - 1, route.SecondCityID - 1] = route;
+            graph[route.SecondCityID - 1, route.FirstCityID - 1] = route;
         }
 
-
-
         CalculateRoute t = new CalculateRoute();
-        double Duration = t.dijkstra(graph, src, target, NumCities);
+        double Duration = t.dijkstra(graph, src, target, NumCities, false);
         System.Console.WriteLine("TEST RAN AND RETURNED");
         System.Console.WriteLine("CityFrom: " + src);
         System.Console.WriteLine("CityTo: " + target);
