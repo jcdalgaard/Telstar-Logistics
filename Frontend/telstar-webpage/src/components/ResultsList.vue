@@ -4,7 +4,7 @@
             <label class="col-12">{{ lang.fastestLabel }}</label>
             <div class="col-12">
                 <ResultsItem
-                    :route="resultsList[0]"
+                    :route="fastestList[0]"
                     @click="handleSelectRoute($event)"
                 />
             </div>
@@ -13,19 +13,7 @@
             <label class="col-12">{{ lang.economicLabel }}</label>
             <div class="col-12">
                 <ResultsItem
-                    :route="resultsList[2]"
-                    @click="handleSelectRoute($event)"
-                />
-            </div>
-        </div>
-        <div v-if="!expressDeliery" class="row">
-            <label class="col-12">{{ lang.othersLabel }}</label>
-            <div
-                v-for="(route, index) in resultsList"
-                :key="`result-item-${index}`"
-            >
-                <ResultsItem
-                    :route="route"
+                    :route="cheapestList[0]"
                     @click="handleSelectRoute($event)"
                 />
             </div>
@@ -48,7 +36,8 @@ export default {
         },
     },
     props: {
-        resultsList: { type: Array, required: true },
+        cheapestList: { type: Array, required: true },
+        fastestList: { type: Array, required: true },
         expressDeliery: { type: Boolean, required: true },
     },
     emits: ['selectRoute'],

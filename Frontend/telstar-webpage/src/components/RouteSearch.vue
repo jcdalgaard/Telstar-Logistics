@@ -209,15 +209,7 @@ export default {
     },
     methods: {
         async handleSubmit() {
-            console.log('submit', {
-                departureCity: this.departingCity.name,
-                destinationCity: this.destinationCity.name,
-                recordedDelivery: this.recordedDelivery,
-                refridgeratedGoods: this.refridgeratedGoods,
-                liveAnimals: this.liveAnimals,
-                cautiousParcels: this.cautiousParcels,
-                expressDeliery: this.expressDeliery,
-            })
+            this.$emit('loading', true)
             this.$http({
                 method: 'post',
                 url: 'https://fa-tl-dk1.azurewebsites.net/api/SearchRoute',
@@ -233,11 +225,11 @@ export default {
             })
                 .then((body) => {
                     this.$emit('submit', body.data)
-                    console.log('submit success', body)
                 })
                 .catch((e) => {
                     console.log('submit error', e)
                 })
+                .finally(() => this.$emit('loading', false))
         },
         async getCities() {
             this.$http
