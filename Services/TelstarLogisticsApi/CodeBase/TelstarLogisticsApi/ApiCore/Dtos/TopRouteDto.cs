@@ -10,6 +10,7 @@ namespace ApiCore.Dtos
     {
         public string City1 { get; set; }
         public string City2 { get; set; }
-
+        public int Total { get; set; }
+        public double ThisMonth { get; set; }
     }
 }
