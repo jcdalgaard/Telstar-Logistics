@@ -215,9 +215,9 @@ export default {
                 expressDeliery: this.expressDeliery,
             })
             this.$http({
-                method: 'get',
+                method: 'post',
                 url: 'https://fa-tl-dk1.azurewebsites.net/api/SearchRoute',
-                params: {
+                data: {
                     departureCity: this.departingCity.name,
                     destinationCity: this.destinationCity.name,
                     recordedDelivery: this.recordedDelivery,
@@ -237,7 +237,7 @@ export default {
         },
         async getCities() {
             this.$http
-                .post('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
+                .get('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
                 .then((body) => {
                     this.optionsList = body.data
                 })
