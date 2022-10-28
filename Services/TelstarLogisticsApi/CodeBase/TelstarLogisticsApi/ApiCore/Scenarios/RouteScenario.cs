@@ -41,7 +41,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = from,
                         DestinationCty = to,
                         EstimatedArrival = new DateTime(2022,10,28),
-                        Id = "-1", // maybe remove
+                        Id = -1, // maybe remove
                         Price = 0,
                         Stops = -1
                     }
@@ -54,7 +54,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = from,
                         DestinationCty = to,
                         EstimatedArrival = new DateTime(2022,10,28),
-                        Id = "-1", // maybe remove
+                        Id = -1, // maybe remove
                         Price = 0,
                         Stops = -1
                     }
@@ -70,7 +70,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = from,
                         DestinationCty = to,
                         EstimatedArrival = new DateTime(2022,10,28),
-                        Id = "23", // maybe remove
+                        Id = 23, // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
                         Stops = cheapestRoute.NumberOfSegments
                     }
@@ -83,7 +83,7 @@ namespace ApiCore.Scenarios
                         DepartureCity = from,
                         DestinationCty = to,
                         EstimatedArrival = new DateTime(2022,10,28),
-                        Id = "23", // maybe remove
+                        Id = 23, // maybe remove
                         Price = fastestRoute.SegmentPrice.Value * fastestRoute.NumberOfSegments,
                         Stops = fastestRoute.NumberOfSegments
                     }
