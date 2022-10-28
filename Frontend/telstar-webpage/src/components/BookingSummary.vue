@@ -66,7 +66,7 @@ export default {
     emits: ['return', 'confirmed'],
     data() {
         return {
-            lang: lang.BookingSummary,
+            lang: lang.current.BookingSummary,
         }
     },
     methods: {

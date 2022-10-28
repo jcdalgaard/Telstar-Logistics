@@ -37,8 +37,12 @@ export default {
             popularRoutesChartData: [],
             popularRoutesThisMonthChartData: [],
             averageBookingCostTableData: [],
-            lang: lang,
         }
+    },
+    computed: {
+        lang() {
+            return lang.current
+        },
     },
     methods: {
         async getPopularCities() {
@@ -63,7 +67,11 @@ export default {
                     'https://fa-tl-dk1.azurewebsites.net/api/route/mostPopular'
                 )
                 .then((body) => {
-                    this.popularRoutesChartData = body.data
+                    this.popularRoutesChartData = body.data?.map((entry) => ({
+                        name: `${entry.city1} - ${entry.city2}`,
+                        thisMonth: entry.total,
+                        total: entry.thisMonth,
+                    }))
                 })
                 .catch((e) => {
                     console.log(e)
@@ -87,15 +95,15 @@ export default {
         await this.getPopularCities()
         await this.getMostExpensiveCities()
         await this.getPopularRoutes()
-        this.popularRoutesChartData = [
-            { name: 'Sahara - Darfur', thisMonth: 45, total: 127 },
-            { name: 'Congo - Luanda', thisMonth: 66, total: 100 },
-            { name: 'Wadai - Darfur', thisMonth: 15, total: 87 },
-            { name: 'Mocambique - Zanzibar', thisMonth: 2, total: 53 },
-            { name: 'Cairo - Suakin', thisMonth: 25, total: 25 },
-            { name: 'Cairo - Omdurman', thisMonth: 0, total: 17 },
-            { name: 'Luanda - Kabalo', thisMonth: 2, total: 9 },
-        ]
+        // this.popularRoutesChartData = [
+        //     { name: 'Sahara - Darfur', thisMonth: 45, total: 127 },
+        //     { name: 'Congo - Luanda', thisMonth: 66, total: 100 },
+        //     { name: 'Wadai - Darfur', thisMonth: 15, total: 87 },
+        //     { name: 'Mocambique - Zanzibar', thisMonth: 2, total: 53 },
+        //     { name: 'Cairo - Suakin', thisMonth: 25, total: 25 },
+        //     { name: 'Cairo - Omdurman', thisMonth: 0, total: 17 },
+        //     { name: 'Luanda - Kabalo', thisMonth: 2, total: 9 },
+        // ]
         this.popularRoutesThisMonthChartData = this.popularRoutesChartData.map(
             (entry) => ({ thisMonth: entry.thisMonth })
         )

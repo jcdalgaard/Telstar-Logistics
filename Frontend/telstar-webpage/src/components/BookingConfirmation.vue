@@ -32,7 +32,7 @@ export default {
     emits: ['return', 'complete'],
     data() {
         return {
-            lang: lang.BookingConfirmation,
+            lang: lang.current.BookingConfirmation,
         }
     },
 }

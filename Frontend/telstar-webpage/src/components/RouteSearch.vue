@@ -191,7 +191,7 @@ export default {
             expressDeliery: false,
             optionsList: null,
             loading: false,
-            lang: lang.BookRoute.RouteSearch,
+            lang: lang.current.BookRoute.RouteSearch,
         }
     },
     methods: {

@@ -56,9 +56,11 @@ export default {
         CityItem,
         RouteItem,
     },
+    lang() {
+        return lang.current.adminCities
+    },
     data() {
         return {
-            lang: lang.adminCities,
             selectedCity: null,
             cityList: [
                 {

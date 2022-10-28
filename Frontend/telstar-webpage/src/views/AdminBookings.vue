@@ -27,7 +27,6 @@ export default {
     },
     data() {
         return {
-            lang: lang.adminBookings,
             routeList: [
                 {
                     id: 1,
@@ -55,6 +54,11 @@ export default {
                 },
             ],
         }
+    },
+    computed: {
+        lang() {
+            return lang.current.adminBookings
+        },
     },
     methods: {
         getBookingHistory() {

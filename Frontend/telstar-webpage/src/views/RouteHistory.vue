@@ -27,7 +27,7 @@ export default {
     },
     data() {
         return {
-            lang: lang.bookingHistory,
+            lang: lang.current.bookingHistory,
             routeList: [
                 {
                     id: 1,
