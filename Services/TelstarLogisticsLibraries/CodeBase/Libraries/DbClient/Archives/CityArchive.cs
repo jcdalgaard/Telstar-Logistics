@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using DbClient.Archives.Interfaces;
@@ -21,6 +22,29 @@ namespace DbClient.Archives
         public IEnumerable<City> GetAllCities()
         {
             return _dataContext.City.AsEnumerable();
+        }
+
+        public int GetIdByName(string cityName)
+        {
+            var city = _dataContext.City.FirstOrDefault(x => x.Name == cityName.ToLower());
+            if (city == null)
+            {
+                throw new HttpRequestException("Bad Request");
+            }
+
+            return city.ID;
+        }
+
+        public City GetById(
+            int id)
+        {
+            var city = _dataContext.City.FirstOrDefault(x => x.ID == id);
+            if (city == null)
+            {
+                throw new HttpRequestException("City Not Found");
+            }
+
+            return city;
         }
     }
 }
