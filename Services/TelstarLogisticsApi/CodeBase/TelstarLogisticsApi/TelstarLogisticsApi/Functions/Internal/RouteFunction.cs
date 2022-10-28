@@ -27,7 +27,7 @@ namespace TelstarLogisticsApi.Functions.Internal
 
         [FunctionName("SearchRoute")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "SearchRoute")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "SearchRoute")] HttpRequest req,
             ILogger log)
         {
             try
