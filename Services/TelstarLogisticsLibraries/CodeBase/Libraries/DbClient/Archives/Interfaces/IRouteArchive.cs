@@ -11,5 +11,7 @@ namespace DbClient.Archives.Interfaces
     {
         List<Route> GetRoutesThatIncludeTheCity(
             int cityId);
+
+        List<Route> GetAllRoutes();
     }
 }

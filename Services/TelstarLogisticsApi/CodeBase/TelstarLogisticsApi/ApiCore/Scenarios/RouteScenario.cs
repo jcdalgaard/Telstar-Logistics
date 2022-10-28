@@ -15,10 +15,43 @@ namespace ApiCore.Scenarios
     public class RouteScenario: IRouteScenario
     {
         private readonly ICalculateRouteArchive _calculateRouteArchive;
+        private readonly IBookingScenario _bookingScenario;
+        private readonly ICityArchive _cityArchive;
 
-        public RouteScenario(ICalculateRouteArchive calculateRouteArchive)
+        public RouteScenario(ICalculateRouteArchive calculateRouteArchive, IBookingScenario bookingScenario, ICityArchive cityArchive)
         {
             _calculateRouteArchive = calculateRouteArchive;
+            _bookingScenario = bookingScenario;
+            _cityArchive = cityArchive;
+        }
+
+                public List<TopRouteDto> GetMostPopularRoutes()
+        {
+            var allBookings = _bookingScenario.GetAllBookings();
+            var allRoutes = allBookings
+                .SelectMany(b => b.Routes
+                    .Select(rf => rf.Route));
+            var groups = allRoutes.GroupBy(x => new
+                {
+                    x.FirstCityID,
+                    x.SecondCityID,
+                    x.Duration
+                });
+            var result = groups.OrderByDescending(g => g.Count()).Take(5).Select(r =>
+            {
+                City first = _cityArchive.GetById(r.Key.FirstCityID);
+                City second = _cityArchive.GetById(r.Key.SecondCityID);
+                return new TopRouteDto()
+                {
+                    City1 = first.Name,
+                    City2 = second.Name,
+                    Total = r.Count(),
+                    ThisMonth = r.Sum(g => g.Duration)
+
+                };
+            }).ToList();
+
+            return result;
         }
 
         public BestRoutesDto GetRoutes(string from, string to)

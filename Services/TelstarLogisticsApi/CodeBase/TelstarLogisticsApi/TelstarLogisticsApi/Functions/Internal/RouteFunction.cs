@@ -52,5 +52,25 @@ namespace TelstarLogisticsApi.Functions.Internal
                 return new OkObjectResult($"Error: {ex.Message}");
             }
         }
+
+        [FunctionName("MostPopularRoute")]
+        public async Task<IActionResult> Run2(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "route/mostPopular")] HttpRequest req,
+            ILogger log)
+        {
+            try
+            {
+                log.LogInformation("C# HTTP trigger function processed a request.");
+                var result = _routeScenario.GetMostPopularRoutes();
+
+                string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
+
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult($"Error: {ex.Message}");
+            }
+        }
     }
 }

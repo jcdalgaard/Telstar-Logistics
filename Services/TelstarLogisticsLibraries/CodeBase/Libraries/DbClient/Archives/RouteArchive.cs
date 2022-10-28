@@ -23,5 +23,10 @@ namespace DbClient.Archives
         {
             return _dataContext.Route.Where(x => x.FirstCityID == cityId || x.SecondCityID == cityId).ToList();
         }
+
+        public List<Route> GetAllRoutes()
+        {
+            return _dataContext.Route.ToList();
+        }
     }
 }
