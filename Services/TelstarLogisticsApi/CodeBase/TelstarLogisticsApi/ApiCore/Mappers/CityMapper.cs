@@ -23,5 +23,40 @@ namespace ApiCore.Mappers
             }
             return cityNameDtos;
         }
+
+        public static List<TopPriceCityDto> MapCityCollectionToTopCityDtoList(IEnumerable<City> cities)
+        {
+            List<TopPriceCityDto> topCityDtos = new List<TopPriceCityDto>();
+            foreach (var city in cities)
+            {
+                topCityDtos.Add(
+                    new TopPriceCityDto()
+                    {
+                        Id = city.ID,
+                        Name = city.Name
+                    });
+            }
+
+            return topCityDtos;
+        }
+
+        public static TopPriceCityDto MapCityToTopPriceCityDto(City city, double price)
+        {
+            return new TopPriceCityDto()
+            {
+                Id = city.ID,
+                Name = city.Name,
+                Value = price
+            };
+        }
+        public static TopPopularCityDto MapCityToTopPopularCityDto(City city, int value)
+        {
+            return new TopPopularCityDto()
+            {
+                Id = city.ID,
+                Name = city.Name,
+                Value = value
+            };
+        }
     }
 }
