@@ -57,6 +57,7 @@ namespace TelstarLogisticsApi
             services.AddSingleton<IDbTestArchive, DbTestArchive>();
             services.AddSingleton<ICityArchive, CityArchive>();
             services.AddSingleton<IContentTypeArchive, ContentTypeArchive>();
+            services.AddSingleton<IBookingArchive, BookingArchive>();
             services.AddSingleton<IRouteArchive, RouteArchive>();
             services.AddSingleton<ISegmentPriceArchive, SegmentPriceArchive>();
 
@@ -65,6 +66,7 @@ namespace TelstarLogisticsApi
             services.AddSingleton<ICityScenario, CityScenario>();
             services.AddSingleton<IContentTypeScenario, ContentTypeScenario>();
             services.AddSingleton<IRouteScenario, RouteScenario>();
+            services.AddSingleton<IBookingScenario, BookingScenario>();
 
             // add error handler
             //services.AddSingleton<IErrorHandler, ErrorHandler>();

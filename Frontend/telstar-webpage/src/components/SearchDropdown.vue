@@ -104,7 +104,7 @@ export default {
             }, this.debounceTimeout)
         },
         selectOption(option) {
-            this.value = option
+            this.value = option.name
             this.$emit('setRoute', option)
         },
     },

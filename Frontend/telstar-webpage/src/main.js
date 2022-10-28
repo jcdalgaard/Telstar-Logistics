@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import Axios from 'axios'
+import { BootstrapVue } from 'bootstrap-vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -19,6 +22,8 @@ import {
     faMartiniGlass,
     faChevronRight,
     faX,
+    faChevronDown,
+    faPenToSquare,
 } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
@@ -29,11 +34,17 @@ library.add(
     faPaw,
     faMartiniGlass,
     faChevronRight,
-    faX
+    faX,
+    faChevronDown,
+    faPenToSquare
 )
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+Vue.use(BootstrapVue)
+
+Vue.prototype.$http = Axios
 
 Vue.config.productionTip = false
 

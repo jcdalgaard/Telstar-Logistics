@@ -133,23 +133,7 @@ export default {
             liveAnimals: false,
             cautiousParcels: false,
             expressDeliery: false,
-            optionsList: [
-                {
-                    id: 1,
-                    name: 'Addis Abeba',
-                    description: 'String',
-                },
-                {
-                    id: 2,
-                    name: 'Tripoli',
-                    description: 'String',
-                },
-                {
-                    id: 3,
-                    name: 'Zanzibar',
-                    description: 'String',
-                },
-            ],
+            optionsList: null,
             loading: false,
             lang: lang.BookRoute.RouteSearch,
         }
@@ -159,7 +143,14 @@ export default {
             console.log('submit')
         },
         async getCities() {
-            console.log('Getting cities')
+            this.$http
+                .get('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
+                .then((body) => {
+                    this.optionsList = body.data
+                })
+                .catch((e) => {
+                    console.log(e)
+                })
         },
     },
     async mounted() {
