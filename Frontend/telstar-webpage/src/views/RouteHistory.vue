@@ -1,6 +1,6 @@
 <template>
     <div class="view-container">
-        <div class="container bg-white p-2 rounded">
+        <div class="container bg-white p-3 rounded">
             <div class="row">
                 <div class="col">
                     <h1>{{ lang.header }}</h1>
@@ -10,6 +10,7 @@
                 <div
                     v-for="(route, index) in routeList"
                     :key="`route-history-item-${index}`"
+                    class="col-12 col-md-6"
                 >
                     <RouteItem :route="route" :index="index" />
                 </div>
@@ -59,7 +60,9 @@ export default {
         }
     },
     methods: {
-        getBookingHistory() {},
+        getBookingHistory() {
+            // TODO
+        },
     },
     mounted() {
         this.getBookingHistory()
