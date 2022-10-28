@@ -10,8 +10,6 @@ namespace DbClient.Entitites
     public class BookingRouteRef
     {
         public int BookingID { get; set; }
-        public Booking Booking { get; set; } = new Booking();
-
         public int RouteID { get; set; }
         public Route Route { get; set; } = new Route();
     }

@@ -10,5 +10,7 @@ namespace DbClient.Archives.Interfaces
     public interface IBookingArchive
     {
         bool AddBooking(Booking booking);
+        IEnumerable<Booking> GetAllBookings();
+        IEnumerable<Booking> GetAllBookingsByUser(int userId);
     }
 }
