@@ -24,9 +24,9 @@ namespace TelstarLogisticsApi.Functions.Internal
             _bookingScenario = bookingScenario;
         }
 
-        [FunctionName("Bookings")]
+        [FunctionName("AddBooking")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "Bookings")]
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "bookings/add")]
             HttpRequest req,
             ILogger log)
         {
@@ -35,10 +35,46 @@ namespace TelstarLogisticsApi.Functions.Internal
                 var content = await new StreamReader(req.Body).ReadToEndAsync();
 
                 RouteDto route = JsonConvert.DeserializeObject<RouteDto>(content);
-                log.LogInformation("C# HTTP trigger function processed a request.");
+                log.LogInformation("C# HTTP trigger function is processing a request.");
                 var result = _bookingScenario.PostBooking(route);
 
-                string responseMessage = $"Hello! This HTTP triggered function executed successfully.";
+
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult($"Error: {ex.Message}");
+            }
+        }
+
+        [FunctionName("AllBookings")]
+        public async Task<IActionResult> Run2(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "bookings/all")]
+            HttpRequest req,
+            ILogger log)
+        {
+            try
+            {
+
+                log.LogInformation("C# HTTP trigger function is processing a request.");
+                var result = _bookingScenario.GetAllBookings();
+
+                return new OkObjectResult(result);
+            }
+            catch (Exception ex)
+            {
+                return new OkObjectResult($"Error: {ex.Message}");
+            }
+        }
+        [FunctionName("AllBookingsByUser")]
+        public async Task<IActionResult> Run3(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "bookings/user/{userId}")] HttpRequest req, int userId,
+            ILogger log)
+        {
+            try
+            {
+                log.LogInformation("C# HTTP trigger function is processing a request.");
+                var result = _bookingScenario.GetAllBookingsByUser(userId);
 
                 return new OkObjectResult(result);
             }

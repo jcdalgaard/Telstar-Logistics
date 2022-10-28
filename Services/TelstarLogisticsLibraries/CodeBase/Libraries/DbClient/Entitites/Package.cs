@@ -12,7 +12,6 @@ namespace DbClient.Entitites
         [ForeignKey("Booking")]
         public int BookingID { get; set; }
 
-        public Booking Booking { get; set; } = new Booking();
 
         public double Weight;
 
