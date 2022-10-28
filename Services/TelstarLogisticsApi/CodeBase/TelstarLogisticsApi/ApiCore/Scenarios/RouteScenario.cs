@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects.DataClasses;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using ApiCore.Dtos;
@@ -54,7 +55,7 @@ namespace ApiCore.Scenarios
             return result;
         }
 
-        public BestRoutesDto GetRoutes(string from, string to)
+        public BestRoutesDto GetRoutes(SearchDto searchDto)
         {
             List<Route> AllRoutes = _calculateRouteArchive.GetAllRoutes();
             List<Route> AllRoutesWithPrices = _calculateRouteArchive.SetRoutesPrices(AllRoutes);
@@ -72,8 +73,8 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = from,
-                        DestinationCty = to,
+                        DepartureCity = searchDto.DepartureCity,
+                        DestinationCty = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = -1, // maybe remove
                         Price = 0,
@@ -85,8 +86,8 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = from,
-                        DestinationCty = to,
+                        DepartureCity = searchDto.DepartureCity,
+                        DestinationCty = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = -1, // maybe remove
                         Price = 0,
@@ -101,8 +102,8 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = from,
-                        DestinationCty = to,
+                        DepartureCity = searchDto.DepartureCity,
+                        DestinationCty = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = 23, // maybe remove
                         Price = cheapestRoute.SegmentPrice.Value * cheapestRoute.NumberOfSegments,
@@ -114,8 +115,8 @@ namespace ApiCore.Scenarios
                 {
                     new RouteDto()
                     {
-                        DepartureCity = from,
-                        DestinationCty = to,
+                        DepartureCity = searchDto.DepartureCity,
+                        DestinationCty = searchDto.DestinationCity,
                         EstimatedArrival = new DateTime(2022,10,28),
                         Id = 23, // maybe remove
                         Price = fastestRoute.SegmentPrice.Value * fastestRoute.NumberOfSegments,
@@ -123,6 +124,58 @@ namespace ApiCore.Scenarios
                     }
                 }
             };
+        }
+
+        public void ApplyFees(BestRoutesDto bestRoutesDto, SearchDto searchDto)
+        {
+            if (searchDto.CautiousParcels)
+            {
+                foreach (var elem in bestRoutesDto.Cheapest)
+                {
+                    elem.Price *= 0.75;
+                }
+
+                foreach (var elem in bestRoutesDto.Fastest)
+                {
+                    elem.Price *= 0.75;
+                }
+            }
+            if (searchDto.LiveAnimals)
+            {
+                foreach (var elem in bestRoutesDto.Cheapest)
+                {
+                    elem.Price *= 0.5;
+                }
+
+                foreach (var elem in bestRoutesDto.Fastest)
+                {
+                    elem.Price *= 0.5;
+                }
+            }
+            if (searchDto.RecordedDelivery)
+            {
+                foreach (var elem in bestRoutesDto.Cheapest)
+                {
+                    elem.Price += 10;
+                }
+
+                foreach (var elem in bestRoutesDto.Fastest)
+                {
+                    elem.Price += 10;
+                }
+            }
+            if (searchDto.RefridgeratedGoods)
+            {
+                foreach (var elem in bestRoutesDto.Cheapest)
+                {
+                    elem.Price *= 0.1;
+                }
+
+                foreach (var elem in bestRoutesDto.Fastest)
+                {
+                    elem.Price *= 0.1;
+                }
+            }
         }
     }
 }
