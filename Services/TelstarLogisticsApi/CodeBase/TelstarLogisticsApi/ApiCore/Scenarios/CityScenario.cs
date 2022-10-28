@@ -9,6 +9,7 @@ using ApiCore.Scenarios.Interfaces;
 using DbClient.Archives.Interfaces;
 using DbClient.Entitites;
 
+
 namespace ApiCore.Scenarios
 {
     public class CityScenario : ICityScenario
