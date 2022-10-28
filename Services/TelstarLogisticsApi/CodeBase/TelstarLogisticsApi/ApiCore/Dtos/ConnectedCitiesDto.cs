@@ -10,5 +10,10 @@ namespace ApiCore.Dtos
     {
         public string Provider { get; set; }
         public List<CityDto> ConnectedCities { get; set; }
+
+        public ConnectedCitiesDto()
+        {
+            Provider = "TelStar";
+        }
     }
 }
