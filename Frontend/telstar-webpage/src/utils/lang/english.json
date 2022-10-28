@@ -94,7 +94,8 @@
         }
     },
     "adminCities": {
-        "header": "Cities"
+        "header": "Cities",
+        "routes": "Routes"
     },
     "reporting": {
         "popularCities": "Popular cities",

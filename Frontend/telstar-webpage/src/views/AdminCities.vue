@@ -1,14 +1,6 @@
 <template>
     <div class="view-container">
-        <div
-            v-if="selectedCity === null"
-            class="container-fluid bg-white p-3 my-2 rounded"
-        >
-            <div class="row">
-                <div class="col">
-                    <h1>{{ lang.header }}</h1>
-                </div>
-            </div>
+        <CardContainer v-if="selectedCity === null" :title="lang.header">
             <div class="row">
                 <div
                     v-for="(city, index) in cityList"
@@ -18,30 +10,34 @@
                     <CityItem :city="city" @click="selectedCity = $event" />
                 </div>
             </div>
-        </div>
-        <div v-else>
-            <div class="container-fluid bg-white p-3 my-2 rounded">
-                <div class="row">
-                    <div class="col"></div>
-                    <div class="col-auto">
-                        <button @click="selectedCity = null" class="btn">
-                            <font-awesome-icon icon="fa-solid fa-x" />
-                        </button>
+        </CardContainer>
+        <div v-else class="row row gx-5 gy-4">
+            <div class="col-12">
+                <CardContainer>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-auto">
+                            <button @click="selectedCity = null" class="btn">
+                                <font-awesome-icon icon="fa-solid fa-x" />
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <h1>{{ selectedCity.name }}</h1>
-                <p>{{ selectedCity.description }}</p>
+                    <h1>{{ selectedCity.name }}</h1>
+                    <p>{{ selectedCity.description }}</p>
+                </CardContainer>
             </div>
-            <div class="container-fluid bg-white p-3 my-2 rounded">
-                <div
-                    v-for="(route, index) in selectedCity.routes"
-                    :key="`city-route-${index}`"
-                    class="row"
-                >
-                    <div class="col">
-                        <RouteItem :route="route" :index="index" />
+            <div class="col-12">
+                <CardContainer :title="lang.routes">
+                    <div
+                        v-for="(route, index) in selectedCity.routes"
+                        :key="`city-route-${index}`"
+                        class="row"
+                    >
+                        <div class="col">
+                            <RouteItem :route="route" :index="index" />
+                        </div>
                     </div>
-                </div>
+                </CardContainer>
             </div>
         </div>
     </div>
@@ -51,10 +47,12 @@
 import lang from '@/utils/lang/langBroker'
 import CityItem from '@/components/CityItem.vue'
 import RouteItem from '@/components/RouteItem.vue'
+import CardContainer from '@/components/CardContainer'
 
 export default {
     name: 'AdminCities',
     components: {
+        CardContainer,
         CityItem,
         RouteItem,
     },
