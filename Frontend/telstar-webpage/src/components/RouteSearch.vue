@@ -103,22 +103,30 @@
                         </ul>
                     </div>
                     <div class="col-auto">
-                        <button
-                            type="button"
-                            class="btn btn-lg btn-secondary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                        >
-                            {{ lang.map }}
-                        </button>
-                    </div>
-                    <div class="col-auto">
-                        <button
-                            type="submit"
-                            class="btn btn-lg btn-telstar-primary"
-                        >
-                            {{ lang.search }}
-                        </button>
+                        <div class="row gy-2 d-flex justify-content-end">
+                            <div
+                                class="col-12 col-md-auto d-flex justify-content-end"
+                            >
+                                <button
+                                    type="button"
+                                    class="btn btn-lg btn-secondary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal"
+                                >
+                                    {{ lang.map }}
+                                </button>
+                            </div>
+                            <div
+                                class="col-12 col-md-auto d-flex justify-content-end"
+                            >
+                                <button
+                                    type="submit"
+                                    class="btn btn-lg btn-telstar-primary"
+                                >
+                                    {{ lang.search }}
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -160,7 +168,7 @@
                             class="btn btn-secondary"
                             data-bs-dismiss="modal"
                         >
-                            Close
+                            {{ lang.close }}
                         </button>
                     </div>
                 </div>
@@ -180,6 +188,7 @@ export default {
         SearchDropdown,
         IconBtn,
     },
+    emits: ['submit', 'expressDeliery'],
     data() {
         return {
             departingCity: '',
@@ -196,11 +205,39 @@ export default {
     },
     methods: {
         async handleSubmit() {
-            console.log('submit')
+            console.log('submit', {
+                departureCity: this.departingCity.name,
+                destinationCity: this.destinationCity.name,
+                recordedDelivery: this.recordedDelivery,
+                refridgeratedGoods: this.refridgeratedGoods,
+                liveAnimals: this.liveAnimals,
+                cautiousParcels: this.cautiousParcels,
+                expressDeliery: this.expressDeliery,
+            })
+            this.$http({
+                method: 'get',
+                url: 'https://fa-tl-dk1.azurewebsites.net/api/SearchRoute',
+                params: {
+                    departureCity: this.departingCity.name,
+                    destinationCity: this.destinationCity.name,
+                    recordedDelivery: this.recordedDelivery,
+                    refridgeratedGoods: this.refridgeratedGoods,
+                    liveAnimals: this.liveAnimals,
+                    cautiousParcels: this.cautiousParcels,
+                    expressDeliery: this.expressDeliery,
+                },
+            })
+                .then((body) => {
+                    this.$emit('submit', body.data)
+                    console.log('submit success', body)
+                })
+                .catch((e) => {
+                    console.log('submit error', e)
+                })
         },
         async getCities() {
             this.$http
-                .get('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
+                .post('https://fa-tl-dk1.azurewebsites.net/api/GetCities')
                 .then((body) => {
                     this.optionsList = body.data
                 })
@@ -211,6 +248,11 @@ export default {
     },
     async mounted() {
         await this.getCities()
+    },
+    watch: {
+        expressDeliery() {
+            this.$emit('expressDeliery', this.expressDeliery)
+        },
     },
 }
 </script>

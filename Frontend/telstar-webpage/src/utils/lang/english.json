@@ -32,6 +32,7 @@
             "map": "Map",
             "From": "From",
             "To": "To",
+            "close": "Close",
             "recordedDelivery": "Recorded delivery*",
             "refridgeratedGoods": "Refrigerated goods*",
             "liveAnimals": "Live animals*",

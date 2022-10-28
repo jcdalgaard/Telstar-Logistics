@@ -58,7 +58,11 @@ export default {
     },
     methods: {
         getBookingHistory() {
-            // TODO
+            this.$http
+                .get('https://fa-tl-dk1.azurewebsites.net/api/bookings/user/10')
+                .then((body) => {
+                    this.routeList = body.data
+                })
         },
     },
     mounted() {

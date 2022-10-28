@@ -1,6 +1,7 @@
 <template>
     <CollapseSection
-        :header="`${route.departureCity} - ${route.destinationCity}`"
+        :header="`${route.routes[0].route.firstCity.name} - ${route.routes[0].route.secondCity.name}`"
+        :index="index"
     >
         <form @submit.prevent="handleUpdate()">
             <div class="row">
@@ -15,7 +16,9 @@
                                     :id="`route-departure-${index}`"
                                     type="text"
                                     class="form-control"
-                                    :value="route.departureCity"
+                                    :value="
+                                        route.routes[0].route.firstCity.name
+                                    "
                                 />
                             </div>
                             <label :for="`route-price-${index}`">{{
@@ -42,7 +45,9 @@
                                     :id="`route-destination-${index}`"
                                     type="text"
                                     class="form-control"
-                                    :value="route.destinationCity"
+                                    :value="
+                                        route.routes[0].route.secondCity.name
+                                    "
                                 />
                             </div>
                             <label :for="`route-date-${index}`">

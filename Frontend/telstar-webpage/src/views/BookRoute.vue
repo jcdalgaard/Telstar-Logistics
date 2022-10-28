@@ -1,8 +1,13 @@
 <template>
     <div v-if="selectedRoute === null" class="view-container">
-        <RouteSearch />
+        <RouteSearch
+            @submit="resultsList = $event"
+            @expressDeliery="expressDeliery = $event"
+        />
         <ResultsList
+            v-if="resultsList.length > 0"
             :results-list="resultsList"
+            :express-deliery="expressDeliery"
             @selectRoute="handleSelectedRoute($event)"
         />
     </div>
@@ -39,6 +44,7 @@ export default {
         return {
             selectedRoute: null,
             bookingConfirmed: false,
+            expressDeliery: false,
             resultsList: [
                 {
                     id: 1,
@@ -72,6 +78,57 @@ export default {
             this.selectedRoute = route
         },
         async saveBooking() {
+            this.$http({
+                method: 'post',
+                url: '',
+                data: {
+                    arrivalDate: null,
+                    bookedDate: new Date(),
+                    price: null,
+                    routes: [
+                        {
+                            bookingID: null,
+                            routeID: null,
+                            route: {
+                                firstCityID: null,
+                                firstCity: {
+                                    name: this.selectedRoute.departureCity,
+                                    isActive: true,
+                                    id: null,
+                                },
+                                secondCityID: null,
+                                secondCity: {
+                                    name: this.selectedRoute.destinationCity,
+                                    isActive: true,
+                                    id: null,
+                                },
+                                segmentPriceID: 1,
+                                segmentPrice: {
+                                    value: null,
+                                    id: null,
+                                },
+                                numberOfSegments: null,
+                                duration: null,
+                                id: null,
+                            },
+                        },
+                    ],
+                    packages: [],
+                    userID: null,
+                    user: {
+                        name: '',
+                        password: '',
+                        userRoleID: 0,
+                        userRole: {
+                            name: '',
+                            id: 0,
+                        },
+                        id: 0,
+                    },
+                    bookingStatus: 'COM',
+                    id: null,
+                },
+            }).then((this.bookingConfirmed = true))
             this.bookingConfirmed = true
         },
     },

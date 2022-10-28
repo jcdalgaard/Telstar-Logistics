@@ -9,7 +9,7 @@
                 />
             </div>
         </div>
-        <div class="row">
+        <div v-if="!expressDeliery" class="row">
             <label class="col-12">{{ lang.economicLabel }}</label>
             <div class="col-12">
                 <ResultsItem
@@ -18,7 +18,7 @@
                 />
             </div>
         </div>
-        <div class="row">
+        <div v-if="!expressDeliery" class="row">
             <label class="col-12">{{ lang.othersLabel }}</label>
             <div
                 v-for="(route, index) in resultsList"
@@ -49,6 +49,7 @@ export default {
     },
     props: {
         resultsList: { type: Array, required: true },
+        expressDeliery: { type: Boolean, required: true },
     },
     emits: ['selectRoute'],
     methods: {

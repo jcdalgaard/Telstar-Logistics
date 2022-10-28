@@ -7,7 +7,7 @@
             data-bs-toggle="collapse"
             :data-bs-target="`#collapse-${header
                 .toLowerCase()
-                .replace(/\s/g, '-')}`"
+                .replace(/\s/g, '-')}-${index}`"
             aria-expanded="false"
             :title="header"
         >
@@ -23,7 +23,9 @@
         </div>
         <div
             class="collapse px-2"
-            :id="`collapse-${header.toLowerCase().replace(/\s/g, '-')}`"
+            :id="`collapse-${header
+                .toLowerCase()
+                .replace(/\s/g, '-')}-${index}`"
         >
             <slot></slot>
         </div>
@@ -36,6 +38,7 @@ export default {
     components: {},
     props: {
         header: { type: String, required: true },
+        index: { type: Number, required: true },
     },
 }
 </script>

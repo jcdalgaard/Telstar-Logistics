@@ -66,64 +66,202 @@ export default {
                 {
                     id: 1,
                     name: 'Tunis',
-                    description: 'Tunis is a town in northern Africa.',
                     routes: [
                         {
-                            id: 1,
-                            departureCity: 'Tunis',
-                            destinationCity: 'Kapstaden',
-                            price: 123,
-                            steps: 4,
-                        },
-                        {
-                            id: 1,
-                            departureCity: 'Dakar',
-                            destinationCity: 'Tunis',
-                            price: 123,
-                            steps: 4,
+                            routes: [
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'De Kanariskeoeer',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Tunis',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'Tanger',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Tunis',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'Cairo',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Tunis',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
                 {
-                    id: 2,
-                    name: 'Kapstaden',
-                    description:
-                        'Kapstaden is the southern most city of Africa.',
+                    id: 1,
+                    name: 'De Kanariskeoeer',
                     routes: [
                         {
-                            id: 1,
-                            departureCity: 'Tunis',
-                            destinationCity: 'Kapstaden',
-                            price: 123,
-                            steps: 4,
-                        },
-                        {
-                            id: 3,
-                            departureCity: 'Kapstaden',
-                            destinationCity: 'Wadai',
-                            price: 123,
-                            steps: 4,
-                        },
-                        {
-                            id: 5,
-                            departureCity: 'Kapstaden',
-                            destinationCity: 'Dakar',
-                            price: 123,
-                            steps: 4,
+                            routes: [
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'De Kanariskeoeer',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Tunis',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'Tanger',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'De Kanariskeoeer',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'Cairo',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'De Kanariskeoeer',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
                 {
-                    id: 3,
-                    name: 'Dakar',
-                    description: 'Dakas is a city in west-Africa.',
+                    id: 1,
+                    name: 'Cairo',
                     routes: [
                         {
-                            id: 1,
-                            departureCity: 'Kapstaden',
-                            destinationCity: 'Dakar',
-                            price: 123,
-                            steps: 4,
+                            routes: [
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'De Kanariskeoeer',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Cairo',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                            ],
+                        },
+                        {
+                            routes: [
+                                {
+                                    route: {
+                                        firstCityID: 2,
+                                        firstCity: {
+                                            name: 'Tanger',
+                                            isActive: true,
+                                            id: 2,
+                                        },
+                                        secondCityID: 3,
+                                        secondCity: {
+                                            name: 'Cairo',
+                                            isActive: true,
+                                            id: 3,
+                                        },
+                                        segmentPriceID: 1,
+                                        segmentPrice: { value: 0.0, id: 0 },
+                                        numberOfSegments: 2,
+                                        duration: 8.0,
+                                        id: 3,
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
