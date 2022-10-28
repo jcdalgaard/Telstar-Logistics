@@ -11,5 +11,8 @@ namespace ApiCore.Scenarios.Interfaces
     {
         public ConnectedCitiesDto GetConnectedCities(string cityName, double weight, string contentType);
         public List<CityNameDto> GetAllCities();
+
+        public List<TopPopularCityDto> GetMostPopularCities();
+        public List<TopPriceCityDto> GetMostExpensiveCities();
     }
 }
