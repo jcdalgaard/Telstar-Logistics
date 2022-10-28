@@ -15,5 +15,7 @@ namespace DbClient.Archives.Interfaces
         int GetCityID(string city);
 
         List<Route> SetRoutesPrices(List<Route> AllRoutes);
+
+        int GetNumberOfCities();
     }
 }

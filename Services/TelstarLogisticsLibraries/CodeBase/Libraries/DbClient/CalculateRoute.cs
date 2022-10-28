@@ -114,12 +114,12 @@ public class CalculateRoute
 
     // Driver Code
 
-    public Route calculateCheapestRoute(List<Route> AllRoutes, int src, int target) // Get number of cities
+    public Route calculateCheapestRoute(List<Route> AllRoutes, int src, int target, int numberOfCities) // Get number of cities
     {
         // Initialize graph/distance to 0, and then build from DB
         System.Console.WriteLine("Entered calculateCheapestRoute");
         System.Console.WriteLine(AllRoutes.Count());
-        int NumCities = 32;
+        int NumCities = numberOfCities;
         Route[,] graph = new Route[NumCities, NumCities];
         for (int i = 0; i < NumCities; i++)
         {
@@ -162,12 +162,12 @@ public class CalculateRoute
         return cheapestRoute;
     }
 
-    public Route calculateFastestRoute(List<Route> AllRoutes, int src, int target) // Get number of cities
+    public Route calculateFastestRoute(List<Route> AllRoutes, int src, int target, int numberOfCities) // Get number of cities
     {
         // Initialize graph/distance to 0, and then build from DB
         System.Console.WriteLine("Entered calculateCheapestRoute");
         System.Console.WriteLine(AllRoutes.Count());
-        int NumCities = 32;
+        int NumCities = numberOfCities;
         Route[,] graph = new Route[NumCities, NumCities];
         for (int i = 0; i < NumCities; i++)
         {

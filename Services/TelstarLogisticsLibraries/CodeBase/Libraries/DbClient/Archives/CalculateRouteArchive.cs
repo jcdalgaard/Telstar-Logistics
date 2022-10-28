@@ -37,5 +37,10 @@ namespace DbClient.Archives
 
             return AllRoutes;
         }
+
+        public int GetNumberOfCities()
+        {
+            return _dataContext.City.ToList().Count();
+        }
     }
 }
